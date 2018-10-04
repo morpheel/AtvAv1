@@ -7,7 +7,8 @@ ruby '2.5.1'
 gem 'bootstrap_sb_admin_base_v2'
 gem 'jquery'
 gem 'jquery-rails'
-
+#Cocoon
+gem 'cocoon'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'

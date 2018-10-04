@@ -24,9 +24,11 @@ ActiveRecord::Schema.define(version: 2018_10_04_000756) do
     t.string "nome"
     t.string "cargaHoraria"
     t.bigint "professor_id"
+    t.bigint "turma_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["professor_id"], name: "index_disciplinas_on_professor_id"
+    t.index ["turma_id"], name: "index_disciplinas_on_turma_id"
   end
 
   create_table "horas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -82,6 +84,7 @@ ActiveRecord::Schema.define(version: 2018_10_04_000756) do
   end
 
   add_foreign_key "disciplinas", "professors"
+  add_foreign_key "disciplinas", "turmas"
   add_foreign_key "mat_discs", "disciplinas"
   add_foreign_key "mat_discs", "mat_turmas"
   add_foreign_key "mat_turmas", "alunos"

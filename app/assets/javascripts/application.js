@@ -15,5 +15,6 @@
 //= require bootstrap_sb_admin_base_v2
 //= require rails-ujs
 //= require activestorage
+//= require cocoon
 //= require turbolinks
 //= require_tree .

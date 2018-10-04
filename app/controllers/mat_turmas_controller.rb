@@ -25,8 +25,12 @@ class MatTurmasController < ApplicationController
   # POST /mat_turmas.json
   def create
     @mat_turma = MatTurma.new(mat_turma_params)
-
+    disciplinas = Disciplina.where("disciplinas.turma_id="+@mat_turma.turma_id.to_s)
+    disciplinas.each do |disciplina|
+      matriculadisc = @mat_turma.mat_disc.build
+      matriculadisc.disciplina_id = disciplina.id
     respond_to do |format|
+    end
       if @mat_turma.save
         format.html { redirect_to @mat_turma, notice: 'Mat turma was successfully created.' }
         format.json { render :show, status: :created, location: @mat_turma }
@@ -69,6 +73,6 @@ class MatTurmasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mat_turma_params
-      params.require(:mat_turma).permit(:aluno_id, :turma_id)
+      params.require(:mat_turma).permit(:aluno_id, :turma_id, mat_disc_attributes: [:id, :disciplina_id, :_destroy])
     end
 end
