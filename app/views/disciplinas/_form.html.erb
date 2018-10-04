@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :nome %>
+    <%= form.label :professor_id %>
+    <%= form.collection_select(:professor_id, Professor.all, :id, :nome, {:prompt=>"Selecionar Professor"}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Nome da Disciplina" %>
     <%= form.text_field :nome %>
   </div>
 
   <div class="field">
-    <%= form.label :cargaHoraria %>
+    <%= form.label "Carga Horária" %>
     <%= form.text_field :cargaHoraria %>
-  </div>
-
-  <div class="field">
-    <%= form.label :professor_id %>
-    <%= form.text_field :professor_id %>
   </div>
 
   <div class="actions">

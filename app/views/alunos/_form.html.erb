@@ -17,8 +17,9 @@
   </div>
 
   <div class="field">
-    <%= form.label :dt_Nasc %>
-    <%= form.date_select :dt_Nasc %>
+    <%= form.label "Data de Nascimento" %>
+    <%= form.date_select(:dt_Nasc, :use_two_digit_numbers => true, :start_year => Date.today.year - 70, :end_year => Date.today.year,order: [:day, :month, :year]) %>
+
   </div>
 
   <div class="field">

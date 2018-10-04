@@ -1,19 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Professor:</strong>
+  <%= @disciplina.professor.nome %>
+</p>
+
+<p>
   <strong>Nome:</strong>
   <%= @disciplina.nome %>
 </p>
 
 <p>
-  <strong>Cargahoraria:</strong>
-  <%= @disciplina.cargaHoraria %>
+  <strong>Carga Horária:</strong>
+  <%= @disciplina.ch %>
 </p>
 
-<p>
-  <strong>Professor:</strong>
-  <%= @disciplina.professor %>
-</p>
 
 <%= link_to 'Edit', edit_disciplina_path(@disciplina) %> |
 <%= link_to 'Back', disciplinas_path %>

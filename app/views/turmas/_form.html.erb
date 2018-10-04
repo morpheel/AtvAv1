@@ -12,14 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :sala_id %>
-    <%= form.text_field :sala_id %>
-  </div>
-
-  <div class="field">
     <%= form.label :nome %>
     <%= form.text_field :nome %>
   </div>
+  <div class="field">
+    <%= form.label :sala_id %>
+    <%= form.collection_select(:sala_id, Sala.all, :id, :salabloco, {:prompt=>"Selecionar Sala"}) %>
+  </div>
+  <div class="field">
+    <%= form.label :hora_id %>
+    <%= form.collection_select(:hora_id, Hora.all, :id, :iniciofim, {:prompt=>"Selecionar Hora"}) %>
+  </div>
+
 
   <div class="actions">
     <%= form.submit %>

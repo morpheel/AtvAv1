@@ -6,8 +6,9 @@
   <thead>
     <tr>
       <th>Nome</th>
-      <th>Cargahoraria</th>
       <th>Professor</th>
+      <th>Carga Horária</th>
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,8 +17,8 @@
     <% @disciplinas.each do |disciplina| %>
       <tr>
         <td><%= disciplina.nome %></td>
-        <td><%= disciplina.cargaHoraria %></td>
-        <td><%= disciplina.professor %></td>
+        <td><%= disciplina.professor.nome %></td>
+        <td><%= disciplina.ch %></td>
         <td><%= link_to 'Show', disciplina %></td>
         <td><%= link_to 'Edit', edit_disciplina_path(disciplina) %></td>
         <td><%= link_to 'Destroy', disciplina, method: :delete, data: { confirm: 'Are you sure?' } %></td>

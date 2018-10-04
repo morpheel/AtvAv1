@@ -72,10 +72,12 @@ ActiveRecord::Schema.define(version: 2018_10_04_000756) do
   end
 
   create_table "turmas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "sala_id"
     t.string "nome"
+    t.bigint "sala_id"
+    t.bigint "hora_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["hora_id"], name: "index_turmas_on_hora_id"
     t.index ["sala_id"], name: "index_turmas_on_sala_id"
   end
 
@@ -84,5 +86,6 @@ ActiveRecord::Schema.define(version: 2018_10_04_000756) do
   add_foreign_key "mat_discs", "mat_turmas"
   add_foreign_key "mat_turmas", "alunos"
   add_foreign_key "mat_turmas", "turmas"
+  add_foreign_key "turmas", "horas"
   add_foreign_key "turmas", "salas"
 end
