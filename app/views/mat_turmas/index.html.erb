@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Mat Turmas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Aluno</th>
+      <th>Turma</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mat_turmas.each do |mat_turma| %>
+      <tr>
+        <td><%= mat_turma.aluno %></td>
+        <td><%= mat_turma.turma %></td>
+        <td><%= link_to 'Show', mat_turma %></td>
+        <td><%= link_to 'Edit', edit_mat_turma_path(mat_turma) %></td>
+        <td><%= link_to 'Destroy', mat_turma, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mat Turma', new_mat_turma_path %>

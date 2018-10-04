@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  cargaHoraria: MyString
+  professor: one
+
+two:
+  nome: MyString
+  cargaHoraria: MyString
+  professor: two

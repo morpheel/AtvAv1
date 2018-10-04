@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Numsala:</strong>
+  <%= @sala.numSala %>
+</p>
+
+<p>
+  <strong>Bloco:</strong>
+  <%= @sala.bloco %>
+</p>
+
+<p>
+  <strong>Capacidade:</strong>
+  <%= @sala.capacidade %>
+</p>
+
+<%= link_to 'Edit', edit_sala_path(@sala) %> |
+<%= link_to 'Back', salas_path %>

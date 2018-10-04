@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  dt_Nasc: 2018-10-03
+  endereco: MyString
+
+two:
+  nome: MyString
+  dt_Nasc: 2018-10-03
+  endereco: MyString

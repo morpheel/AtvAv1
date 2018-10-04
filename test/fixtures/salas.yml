@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  numSala: MyString
+  bloco: MyString
+  capacidade: MyString
+
+two:
+  numSala: MyString
+  bloco: MyString
+  capacidade: MyString
