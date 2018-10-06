@@ -4,7 +4,11 @@ class ProfessorsController < ApplicationController
   # GET /professors
   # GET /professors.json
   def index
-    @professors = Professor.order(:nome).page(params[:page])
+    @professors = if params[:nome]
+      Professor.where('nome LIKE ?', "%#{params[:nome]}%").order(:nome).page(params[:page])
+    else
+      Professor.order(:nome).page(params[:page])
+    end
   end
 
   # GET /professors/1
