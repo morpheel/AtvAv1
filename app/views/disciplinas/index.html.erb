@@ -7,6 +7,7 @@
     <tr>
       <th>Nome</th>
       <th>Professor</th>
+      <th>Turma</th>
       <th>Carga Horária</th>
 
       <th colspan="3"></th>
@@ -18,6 +19,7 @@
       <tr>
         <td><%= disciplina.nome %></td>
         <td><%= disciplina.professor.nome %></td>
+        <td><%= disciplina.turma.nome %></td>
         <td><%= disciplina.ch %></td>
         <td><%= link_to 'Show', disciplina %></td>
         <td><%= link_to 'Edit', edit_disciplina_path(disciplina) %></td>

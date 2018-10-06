@@ -9,6 +9,10 @@ gem 'jquery'
 gem 'jquery-rails'
 #Cocoon
 gem 'cocoon'
+#Audited
+gem 'audited'
+#Kaminari - Paginação
+gem 'kaminari'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'

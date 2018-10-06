@@ -17,6 +17,10 @@
   </div>
 
   <div class="field">
+    <%= form.label "Turma" %>
+    <%= form.collection_select(:turma_id, Turma.all, :id, :nome, {:prompt=>"Selecionar Turma"}) %>
+  </div>
+  <div class="field">
     <%= form.label "Nome da Disciplina" %>
     <%= form.text_field :nome %>
   </div>
@@ -25,6 +29,9 @@
     <%= form.label "Carga Horária" %>
     <%= form.text_field :cargaHoraria %>
   </div>
+
+
+
 
   <div class="actions">
     <%= form.submit %>

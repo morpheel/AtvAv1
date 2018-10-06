@@ -2,12 +2,12 @@
 
 <p>
   <strong>Aluno:</strong>
-  <%= @mat_turma.aluno %>
+  <%= @mat_turma.aluno.nome %>
 </p>
 
 <p>
   <strong>Turma:</strong>
-  <%= @mat_turma.turma %>
+  <%= @mat_turma.turma.nome %>
 </p>
 
 <%= link_to 'Edit', edit_mat_turma_path(@mat_turma) %> |

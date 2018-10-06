@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Mat Turmas</h1>
+<h1>Matricular Aluno em Turma</h1>
 
 <table>
   <thead>
@@ -14,8 +14,8 @@
   <tbody>
     <% @mat_turmas.each do |mat_turma| %>
       <tr>
-        <td><%= mat_turma.aluno %></td>
-        <td><%= mat_turma.turma %></td>
+        <td><%= mat_turma.aluno.nome %></td>
+        <td><%= mat_turma.turma.nome %></td>
         <td><%= link_to 'Show', mat_turma %></td>
         <td><%= link_to 'Edit', edit_mat_turma_path(mat_turma) %></td>
         <td><%= link_to 'Destroy', mat_turma, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -27,10 +27,10 @@ class MatTurmasController < ApplicationController
     @mat_turma = MatTurma.new(mat_turma_params)
     disciplinas = Disciplina.where("disciplinas.turma_id="+@mat_turma.turma_id.to_s)
     disciplinas.each do |disciplina|
-      matriculadisc = @mat_turma.mat_disc.build
+      matriculadisc = @mat_turma.mat_discs.build
       matriculadisc.disciplina_id = disciplina.id
-    respond_to do |format|
     end
+    respond_to do |format|
       if @mat_turma.save
         format.html { redirect_to @mat_turma, notice: 'Mat turma was successfully created.' }
         format.json { render :show, status: :created, location: @mat_turma }

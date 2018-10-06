@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :aluno_id %>
-    <%= form.text_field :aluno_id %>
+    <%= form.collection_select(:aluno_id, Aluno.all, :id, :nome, {:prompt=>"Selecione o Aluno"}) %>
   </div>
 
   <div class="field">
     <%= form.label :turma_id %>
-    <%= form.text_field :turma_id %>
+    <%= form.collection_select(:turma_id, Turma.all, :id, :nome, {:prompt=>"Selecione a Turma"}) %>
   </div>
 
   <div class="actions">
