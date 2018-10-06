@@ -3,7 +3,11 @@
 <h1>Alunos</h1>
 
 <table>
+
   <thead>
+  <div class = "table-responsive">
+    <%= paginate @alunos %>  
+  </div>
     <tr>
       <th>Nome</th>
       <th>Dt nasc</th>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_04_000756) do
+ActiveRecord::Schema.define(version: 2018_10_06_162449) do
 
   create_table "alunos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nome"
@@ -18,6 +18,28 @@ ActiveRecord::Schema.define(version: 2018_10_04_000756) do
     t.string "endereco"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "audits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "auditable_id"
+    t.string "auditable_type"
+    t.integer "associated_id"
+    t.string "associated_type"
+    t.integer "user_id"
+    t.string "user_type"
+    t.string "username"
+    t.string "action"
+    t.text "audited_changes"
+    t.integer "version", default: 0
+    t.string "comment"
+    t.string "remote_address"
+    t.string "request_uuid"
+    t.datetime "created_at"
+    t.index ["associated_type", "associated_id"], name: "associated_index"
+    t.index ["auditable_type", "auditable_id", "version"], name: "auditable_index"
+    t.index ["created_at"], name: "index_audits_on_created_at"
+    t.index ["request_uuid"], name: "index_audits_on_request_uuid"
+    t.index ["user_id", "user_type"], name: "user_index"
   end
 
   create_table "disciplinas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -28,7 +50,7 @@ ActiveRecord::Schema.define(version: 2018_10_04_000756) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["professor_id"], name: "index_disciplinas_on_professor_id"
-    t.index ["turma_id"], name: "index_disciplinas_on_turma_id"
+    t.index ["turma_id"], name: "turmas"
   end
 
   create_table "horas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -84,7 +106,6 @@ ActiveRecord::Schema.define(version: 2018_10_04_000756) do
   end
 
   add_foreign_key "disciplinas", "professors"
-  add_foreign_key "disciplinas", "turmas"
   add_foreign_key "mat_discs", "disciplinas"
   add_foreign_key "mat_discs", "mat_turmas"
   add_foreign_key "mat_turmas", "alunos"

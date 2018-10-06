@@ -4,7 +4,7 @@ class DisciplinasController < ApplicationController
   # GET /disciplinas
   # GET /disciplinas.json
   def index
-    @disciplinas = Disciplina.all
+    @disciplinas = Disciplina.order(:nome).page(params[:page])
   end
 
   # GET /disciplinas/1

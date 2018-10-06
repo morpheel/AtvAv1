@@ -4,7 +4,7 @@ class ProfessorsController < ApplicationController
   # GET /professors
   # GET /professors.json
   def index
-    @professors = Professor.all
+    @professors = Professor.order(:nome).page(params[:page])
   end
 
   # GET /professors/1

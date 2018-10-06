@@ -4,7 +4,7 @@ class HorasController < ApplicationController
   # GET /horas
   # GET /horas.json
   def index
-    @horas = Hora.all
+    @horas = Hora.order(:inicio).page(params[:page])
   end
 
   # GET /horas/1

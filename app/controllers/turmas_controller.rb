@@ -4,7 +4,7 @@ class TurmasController < ApplicationController
   # GET /turmas
   # GET /turmas.json
   def index
-    @turmas = Turma.all
+    @turmas = Turma.order(:nome).page(params[:page])
   end
 
   # GET /turmas/1

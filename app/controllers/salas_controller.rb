@@ -4,7 +4,7 @@ class SalasController < ApplicationController
   # GET /salas
   # GET /salas.json
   def index
-    @salas = Sala.all
+    @salas = Sala.order(:bloco).page(params[:page])
   end
 
   # GET /salas/1

@@ -4,7 +4,7 @@ class AlunosController < ApplicationController
   # GET /alunos
   # GET /alunos.json
   def index
-    @alunos = Aluno.all
+    @alunos = Aluno.order(:nome).page(params[:page])
   end
 
   # GET /alunos/1

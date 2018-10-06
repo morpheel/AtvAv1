@@ -4,7 +4,7 @@ class MatTurmasController < ApplicationController
   # GET /mat_turmas
   # GET /mat_turmas.json
   def index
-    @mat_turmas = MatTurma.all
+    @mat_turmas = MatTurma.order(:turma_id).page(params[:page])
   end
 
   # GET /mat_turmas/1
