@@ -1,32 +1,39 @@
-<%= form_with(model: sala, local: true) do |form| %>
-  <% if sala.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(sala.errors.count, "error") %> prohibited this sala from being saved:</h2>
-
-      <ul>
-      <% sala.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="sala form">
+  <%= form_with(model: sala, local: true) do |form| %>
+    <% if sala.errors.any? %>
+      <div id="error_explanation" class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= pluralize(sala.errors.count, "error") %> ao salvar sala:</h3>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <% sala.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    <!-- Campos do formulário -->
+    <div class="row">
+      <div class="col-lg-1 form-group" >  
+        <%= form.label :numSala, 'Nº da Sala', :class => 'control-label' %>                 
+        <%= form.text_field :numSala, :class => 'form-control' %>
+      </div>
+      <div class="col-lg-1 form-group">   
+        <%= form.label :bloco, :class => 'control-label' %>
+        <%= form.text_field :bloco, :class => 'form-control' %>
+      </div>
+      <div class="col-lg-1 form-group" >  
+        <%= form.label :capacidade, :class => 'control-label' %>                 
+        <%= form.text_field :capacidade, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-7 form-group">  
+        <input type="submit" name="commit" class="btn btn-primary" value="Salvar" data-disable-with="Salvando Sala..."/>
+        <%= link_to 'Voltar', salas_path, :class => "btn btn-primary", :style=> 'color:#AAAAAA', :onclick => 'window.location.reload(true);' %>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :numSala %>
-    <%= form.text_field :numSala %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bloco %>
-    <%= form.text_field :bloco %>
-  </div>
-
-  <div class="field">
-    <%= form.label :capacidade %>
-    <%= form.text_field :capacidade %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

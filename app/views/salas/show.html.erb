@@ -1,19 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="col-lg-3">
+	    <h2 class="page-header" style="margin-left: 0%;border-bottom-style: default; border-bottom-width: 1px; border-bottom-color: black;">Detalhes da Sala</h2>
+	</div>
+</div>
+<div class="row">
 
-<p>
-  <strong>Numsala:</strong>
-  <%= @sala.numSala %>
-</p>
-
-<p>
-  <strong>Bloco:</strong>
-  <%= @sala.bloco %>
-</p>
-
-<p>
-  <strong>Capacidade:</strong>
-  <%= @sala.capacidade %>
-</p>
-
-<%= link_to 'Edit', edit_sala_path(@sala) %> |
-<%= link_to 'Back', salas_path %>
+	<div class="col-lg-1 form-group" >
+  		<label class = 'control-label'>Nº da Sala</label>
+		<input rows="1" readonly="true" class = 'form-control' value="<%= @sala.numSala %>">          
+    </div>
+    <div class="col-lg-1 form-group">   
+      	<label class = 'control-label'>Bloco</label>
+      	<input readonly="true" class = 'form-control' value="<%= @sala.bloco %>">
+    </div>
+	<div class="col-lg-1 form-group">
+		<label class = 'control-label'>Capacidade</label>
+		<input readonly="true" class='form-control' value="<%= @sala.capacidade %>">
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-4 form-group" onclick="window.location.reload(true);">  
+		<%= link_to 'Alterar Dados', edit_sala_path(@sala), :class => "btn btn-primary", :style=> 'color:#AAAAAA' %>
+		<%= link_to 'Voltar',  salas_path, :class => "btn btn-primary", :style=> 'color:#FFFFFF'%>
+	</div>
+</div>

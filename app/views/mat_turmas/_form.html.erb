@@ -1,27 +1,35 @@
-<%= form_with(model: mat_turma, local: true) do |form| %>
-  <% if mat_turma.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(mat_turma.errors.count, "error") %> prohibited this mat_turma from being saved:</h2>
-
-      <ul>
-      <% mat_turma.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="mat_turma form">
+  <%= form_with(model: mat_turma, local: true) do |form| %>
+    <% if mat_turma.errors.any? %>
+      <div id="error_explanation" class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= pluralize(mat_turma.errors.count, "error") %> ao salvar matricula:</h3>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <% mat_turma.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    <!-- Campos do formulário -->
+    <div class="row">
+      <div class="col-lg-3 form-group" >  
+        <%= form.label :aluno_id, :class => 'control-label' %>                 
+        <%= form.collection_select(:aluno_id, Aluno.all, :id, :nome, {:prompt=>"Selecione o Aluno"}) %>
+      </div>
+      <div class="col-lg-3 form-group">   
+        <%= form.label :turma_id, :class => 'control-label' %>
+        <%= form.collection_select(:turma_id, Turma.all, :id, :nome, {:prompt=>"Selecione a Turma"}) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-7 form-group">  
+        <input type="submit" name="commit" class="btn btn-primary" value="Salvar" data-disable-with="Salvando Matrícula..."/>
+        <%= link_to 'Voltar', mat_turmas_path, :class => "btn btn-primary", :style=> 'color:#AAAAAA', :onclick => 'window.location.reload(true);' %>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :aluno_id %>
-    <%= form.collection_select(:aluno_id, Aluno.all, :id, :nome, {:prompt=>"Selecione o Aluno"}) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :turma_id %>
-    <%= form.collection_select(:turma_id, Turma.all, :id, :nome, {:prompt=>"Selecione a Turma"}) %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

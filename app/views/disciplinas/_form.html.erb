@@ -1,39 +1,51 @@
-<%= form_with(model: disciplina, local: true) do |form| %>
-  <% if disciplina.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(disciplina.errors.count, "error") %> prohibited this disciplina from being saved:</h2>
-
-      <ul>
-      <% disciplina.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="disciplina form">
+  <%= form_with(model: disciplina, local: true) do |form| %>
+    <% if disciplina.errors.any? %>
+      <div id="error_explanation" class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= pluralize(disciplina.errors.count, "error") %> ao salvar disciplina:</h3>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <% disciplina.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    <!-- Campos do formulário -->
+    <div class="row">
+      <div class="col-lg-1 form-group" >  
+        <%= form.label :id, 'ID', :class => 'control-label' %>                 
+        <%= form.text_field :id, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 form-group" >  
+        <%= form.label "Nome da Disciplina", :class => 'control-label' %>                 
+        <%= form.text_field :nome, :class => 'form-control' %>
+      </div>
+      <div class="col-lg-4 form-group">
+        <%= form.label "Carga Horária", :class => 'control-label' %>
+        <%= form.text_field :cargaHoraria, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-5 form-group">   
+        <%= form.label "Professor", :class => 'control-label' %>
+        <%= form.collection_select(:professor_id, Professor.all, :id, :nome, {:prompt=>"Selecionar Professor"}) %>
+      </div>
+      <div class="col-lg-2 form-group" >  
+        <%= form.label "Turma", :class => 'control-label' %>                 
+        <%= form.collection_select(:turma_id, Turma.all, :id, :nome, {:prompt=>"Selecionar Turma"}) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-7 form-group">  
+        <input type="submit" name="commit" class="btn btn-primary" value="Salvar" data-disable-with="Salvando Disciplina..."/>
+        <%= link_to 'Voltar', disciplinas_path, :class => "btn btn-primary", :style=> 'color:#AAAAAA', :onclick => 'window.location.reload(true);' %>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :professor_id %>
-    <%= form.collection_select(:professor_id, Professor.all, :id, :nome, {:prompt=>"Selecionar Professor"}) %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Turma" %>
-    <%= form.collection_select(:turma_id, Turma.all, :id, :nome, {:prompt=>"Selecionar Turma"}) %>
-  </div>
-  <div class="field">
-    <%= form.label "Nome da Disciplina" %>
-    <%= form.text_field :nome %>
-  </div>
-
-  <div class="field">
-    <%= form.label "Carga Horária" %>
-    <%= form.text_field :cargaHoraria %>
-  </div>
-
-
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

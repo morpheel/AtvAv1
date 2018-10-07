@@ -10,11 +10,13 @@ class TurmasController < ApplicationController
   # GET /turmas/1
   # GET /turmas/1.json
   def show
+    
   end
 
   # GET /turmas/new
   def new
     @turma = Turma.new
+    @disciplina = @turma.disciplinas.build
   end
 
   # GET /turmas/1/edit
@@ -69,6 +71,6 @@ class TurmasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def turma_params
-      params.require(:turma).permit(:sala_id,:hora_id, :nome)
+      params.require(:turma).permit(:sala_id,:hora_id, :nome, disciplina_attributes:[:disciplina_id, :disciplina_nome, :_destroy])
     end
 end

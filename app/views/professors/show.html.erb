@@ -1,7 +1,10 @@
-<div class="col-lg-12">
-    <h2 class="page-header">Dados do Professor</h2>
+<div class="row">
+	<div class="col-lg-6">
+	    <h2 class="page-header" style="margin-left: 0%;border-bottom-style: default; border-bottom-width: 1px; border-bottom-color: black;">Dados do Professor</h2>
+	</div>
 </div>
 <div class="row">
+
 	<div class="col-lg-1 form-group" >
   		<label class = 'control-label'>ID</label>
 		<input rows="1" readonly="true" class = 'form-control' value="<%= @professor.id %>">          
@@ -20,6 +23,12 @@
 		<label class = 'control-label'>Endereço</label>
 		<input readonly="true" class='form-control' value="<%= @professor.endereco %>">
 	</div>
+</div>
+<div class="row">
+	<div class="col-lg-4 form-group">
+      	<label class = 'control-label'>Email</label>
+		<input readonly="true" class='form-control' value="<%= @professor.email %>">
+    </div>
 </div>
 <div class="row">
 	<div class="col-lg-4 form-group" onclick="window.location.reload(true);">  

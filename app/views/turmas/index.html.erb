@@ -1,34 +1,46 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Turmas</h1>
-
-<table>
-  <thead>
-  <div class = "table-responsive">
-    <%= paginate @turmas %>  
-  </div>
-    <tr>
-      <th>Sala</th>
-      <th>Nome</th>
-      <th>Horário</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @turmas.each do |turma| %>
-      <tr>
-        <td><%= turma.nome %></td>
-        <td><%= turma.sala.salabloco %></td>
-        <td><%= turma.hora.iniciofim %></td>
-        <td><%= link_to 'Show', turma %></td>
-        <td><%= link_to 'Edit', edit_turma_path(turma) %></td>
-        <td><%= link_to 'Destroy', turma, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+ <div class="turmas index">
+  <h1>Turmas </h1>
+    <%= form_tag (turmas_path format:"html"), :method => 'get' do %>  
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-5  form-group">  
+              <%= text_field_tag :nome, params[:nome], :class => 'form-control', :placeholder=>"Pesquisar Turma..." %>  
+            </div>
+            <div class="col-lg-2 form-group" style="float:left">
+              <%= submit_tag "Pesquisar", name: nil, :class => "btn btn-primary" %>
+            </div>
+              <button style="float:right; margin-right: 20px; margin-bottom: 5px"class="btn btn-primary" type="button" onclick="javascript: location.href='<%= new_turma_path %>';"><i class="fa fa-user-plus"></i> Cadastrar Turma</button>
+        </div>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
-
+</div>
+<div class="table-responsive">
+  <%= paginate @turmas %>
+  <table width="100%" class="table table-hover table-striped table-bordered" cellpadding="0" cellspacing="0">
+    <thead>
+      <tr>
+        <th width="5%"><i class="fa fa-user-o"></i>  ID:</th>
+        <th width="23%"><i class="fa fa-address-card-o"></i>  Nome</th>
+        <th width="10%"><i class="fa fa-mobile"></i>  Sala</th>
+        <th width="20%"><i class="fa fa-map-marker"></i>  Horário</th>
+        <th width="12%" class="text-center"><i class="fa fa-gears fa-fw"></i></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @turmas.each do |turma| %>
+        <tr>
+          <td><%= turma.id %></td>
+          <td><%= turma.nome %></td>
+          <td><%= turma.sala.salabloco %></td>
+          <td><%= turma.hora.iniciofim %></td>
+          <td class="text-center" onclick="window.location.reload(true);"><%= link_to 'Visualizar', turma, :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px;' %>
+          <%= link_to 'Alterar', edit_turma_path(turma), :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px' %>
+          <%= link_to 'Remover', turma, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom: 2px' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <br>
-
-<%= link_to 'New Turma', new_turma_path %>
+</div>

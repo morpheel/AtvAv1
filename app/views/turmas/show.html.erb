@@ -1,19 +1,47 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Nome:</strong>
-  <%= @turma.nome %>
-</p>
-
-<p>
-  <strong>Sala:</strong>
-  <%= @turma.sala.salabloco %>
-</p>
-
-<p>
-  <strong>Horário:</strong>
-  <%= @turma.hora.iniciofim %>
-</p>
-
-<%= link_to 'Edit', edit_turma_path(@turma) %> |
-<%= link_to 'Back', turmas_path %>
+<div class="row">
+	<div class="col-lg-4">
+	    <h2 class="page-header" style="border-bottom-style: default; border-bottom-width: 1px; border-bottom-color: black">Informações sobre Turma</h2>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-1 form-group" >
+  		<label class = 'control-label'>ID</label>
+		<input rows="1" readonly="true" class = 'form-control' value="<%= @turma.id %>">          
+    </div>
+    <div class="col-lg-3 form-group">   
+      	<label class = 'control-label'>Nome</label>
+      	<input readonly="true" class = 'form-control' value="<%= @turma.nome %>">
+    </div>
+</div> 
+<div class="row">
+	<div class="col-lg-1 form-group">
+		<label class = 'control-label'>Sala</label>
+		<input readonly="true" class='form-control' value="<%= @turma.sala.salabloco %>">
+	</div>
+	<div class="col-lg-3 form-group">
+		<label class = 'control-label'>Horário</label>
+		<input readonly="true" class='form-control' value="<%= @turma.hora.iniciofim %>">
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-4 form-group" onclick="window.location.reload(true);">  
+		<%= link_to 'Alterar Dados', edit_turma_path(@turma), :class => "btn btn-primary", :style=> 'color:#AAAAAA' %>
+		<%= link_to 'Voltar',  turmas_path, :class => "btn btn-primary", :style=> 'color:#FFFFFF'%>
+	</div>
+</div>
+<div class="row">
+<%= form_with(model: @turma, local: true) do |form| %>
+	<div class="col-lg-4">
+		<h2 class="page-header" style="border-bottom-style: default; border-bottom-width: 1px; border-bottom-color: black;"> Disciplinas Ministradas </h2>
+	</div>
+	<br><br><br><br><br><br>
+	<div id="disciplinas">
+	  <%= form.fields_for :disciplinas do |disciplina| %>
+	    <%= render 'disciplina_fields', f:disciplina %>
+	  <% end %>
+	</div>
+	<br><br><br>
+	<%= link_to 'Visualizar Disciplinas',  disciplinas_path, :class => "btn btn-primary", :style=> 'color:#FFFFFF; margin-left: 1%'%>
+<% end %>
+</div>
+<br>

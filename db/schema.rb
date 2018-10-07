@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_07_112724) do
+ActiveRecord::Schema.define(version: 2018_10_07_132754) do
 
   create_table "alunos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nome"
@@ -60,6 +60,15 @@ ActiveRecord::Schema.define(version: 2018_10_07_112724) do
     t.datetime "updated_at", null: false
     t.index ["professor_id"], name: "index_disciplinas_on_professor_id"
     t.index ["turma_id"], name: "turmas"
+  end
+
+  create_table "discturmas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "disciplina_id"
+    t.bigint "turma_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["disciplina_id"], name: "index_discturmas_on_disciplina_id"
+    t.index ["turma_id"], name: "index_discturmas_on_turma_id"
   end
 
   create_table "horas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -126,6 +135,8 @@ ActiveRecord::Schema.define(version: 2018_10_07_112724) do
 
   add_foreign_key "avaliacaos", "disciplinas"
   add_foreign_key "disciplinas", "professors"
+  add_foreign_key "discturmas", "disciplinas"
+  add_foreign_key "discturmas", "turmas"
   add_foreign_key "mat_discs", "disciplinas"
   add_foreign_key "mat_discs", "mat_turmas"
   add_foreign_key "mat_turmas", "alunos"

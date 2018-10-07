@@ -1,14 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Aluno:</strong>
-  <%= @mat_turma.aluno.nome %>
-</p>
-
-<p>
-  <strong>Turma:</strong>
-  <%= @mat_turma.turma.nome %>
-</p>
-
-<%= link_to 'Edit', edit_mat_turma_path(@mat_turma) %> |
-<%= link_to 'Back', mat_turmas_path %>
+<div class="row">
+	<div class="col-lg-6">
+	    <h2 class="page-header" style="margin-left: 0%;border-bottom-style: default; border-bottom-width: 1px; border-bottom-color: black;">Detalhes da Matricula</h2>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-1 form-group" >
+  		<label class = 'control-label'>ID</label>
+		<input rows="1" readonly="true" class = 'form-control' value="<%= @mat_turma.id %>">          
+    </div>
+</div> 
+<div class="row">
+    <div class="col-lg-3 form-group">   
+      	<label class = 'control-label'>Aluno:</label>
+      	<input readonly="true" class = 'form-control' value="<%= @mat_turma.aluno.nome %>">
+    </div>
+	<div class="col-lg-3 form-group">
+		<label class = 'control-label'>Turma:</label>
+		<input readonly="true" class='form-control' value="<%= @mat_turma.turma.nome %>">
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-4 form-group" onclick="window.location.reload(true);">  
+		<%= link_to 'Alterar Dados', edit_mat_turma_path(@mat_turma), :class => "btn btn-primary", :style=> 'color:#AAAAAA' %>
+		<%= link_to 'Voltar',  mat_turmas_path, :class => "btn btn-primary", :style=> 'color:#FFFFFF'%>
+	</div>
+</div>

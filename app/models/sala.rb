@@ -4,4 +4,7 @@ class Sala < ApplicationRecord
 	def salabloco
 		"#{bloco}#{numSala}"
 	end
+	def maxpessoas
+		"#{capacidade} Pessoas"
+	end
 end

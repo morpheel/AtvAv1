@@ -36,9 +36,15 @@
       </div>
     </div>
     <div class="row">
+      <div class="col-lg-4 form-group">
+        <%= form.label :email, :class => 'control-label' %>
+        <%= form.text_field :email, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-lg-7 form-group">  
         <input type="submit" name="commit" class="btn btn-primary" value="Salvar" data-disable-with="Salvando Professor..."/>
-        <%= link_to 'Voltar', professor_path, :class => "btn btn-primary", :style=> 'color:#AAAAAA', :onclick => 'window.location.reload(true);' %>
+        <%= link_to 'Voltar', professors_path, :class => "btn btn-primary", :style=> 'color:#AAAAAA', :onclick => 'window.location.reload(true);' %>
       </div>
     </div>
   <% end %>

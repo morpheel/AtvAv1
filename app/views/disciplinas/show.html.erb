@@ -1,25 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="col-lg-5">
+	    <h2 class="page-header" style="margin-left: 0%;border-bottom-style: default; border-bottom-width: 1px; border-bottom-color: black;">Informações sobre Disciplina</h2>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-1 form-group" >
+  		<label class = 'control-label'>ID</label>
+		<input rows="1" readonly="true" class = 'form-control' value="<%= @disciplina.id %>">          
+    </div>
+    </div> 
+<div class="row">
+    <div class="col-lg-3 form-group">   
+      	<label class = 'control-label'>Nome</label>
+      	<input readonly="true" class = 'form-control' value="<%= @disciplina.nome %>">
+    </div>
+	<div class="col-lg-2 form-group">
+		<label class = 'control-label'>Carga Horária</label>
+		<input readonly="true" class='form-control' value="<%= @disciplina.ch %>">
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-3 form-group">
+		<label class = 'control-label'>Professor</label>
+		<input readonly="true" class='form-control' value="<%= @disciplina.professor.nome %>">
+	</div>
 
-<p>
-  <strong>Professor:</strong>
-  <%= @disciplina.professor.nome %>
-</p>
-
-<p>
-  <strong>Turma:</strong>
-  <%= @disciplina.turma.nome %>
-</p>
-
-<p>
-  <strong>Nome da Disciplina:</strong>
-  <%= @disciplina.nome %>
-</p>
-
-<p>
-  <strong>Carga Horária:</strong>
-  <%= @disciplina.ch %>
-</p>
-
-
-<%= link_to 'Edit', edit_disciplina_path(@disciplina) %> |
-<%= link_to 'Back', disciplinas_path %>
+	<div class="col-lg-2 form-group">
+      	<label class = 'control-label'>Turma</label>
+		<input readonly="true" class='form-control' value="<%= @disciplina.turma.nome %>">
+    </div>
+</div>
+<div class="row">
+	<div class="col-lg-4 form-group" onclick="window.location.reload(true);">  
+		<%= link_to 'Alterar Dados', edit_disciplina_path(@disciplina), :class => "btn btn-primary", :style=> 'color:#AAAAAA' %>
+		<%= link_to 'Voltar',  disciplinas_path, :class => "btn btn-primary", :style=> 'color:#FFFFFF'%>
+	</div>
+</div>
