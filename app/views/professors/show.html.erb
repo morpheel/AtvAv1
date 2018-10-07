@@ -1,24 +1,29 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Nome:</strong>
-  <%= @professor.nome %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @professor.email %>
-</p>
-
-<p>
-  <strong>Telefone:</strong>
-  <%= @professor.telefone %>
-</p>
-
-<p>
-  <strong>Endereco:</strong>
-  <%= @professor.endereco %>
-</p>
-
-<%= link_to 'Edit', edit_professor_path(@professor) %> |
-<%= link_to 'Back', professors_path %>
+<div class="col-lg-12">
+    <h2 class="page-header">Dados do Professor</h2>
+</div>
+<div class="row">
+	<div class="col-lg-1 form-group" >
+  		<label class = 'control-label'>ID</label>
+		<input rows="1" readonly="true" class = 'form-control' value="<%= @professor.id %>">          
+    </div>
+    <div class="col-lg-5 form-group">   
+      	<label class = 'control-label'>Nome</label>
+      	<input readonly="true" class = 'form-control' value="<%= @professor.nome %>">
+    </div>
+</div> 
+<div class="row">
+	<div class="col-lg-2 form-group">
+		<label class = 'control-label'>Telefone</label>
+		<input readonly="true" class='form-control' value="<%= @professor.telefone %>">
+	</div>
+	<div class="col-lg-4 form-group">
+		<label class = 'control-label'>Endereço</label>
+		<input readonly="true" class='form-control' value="<%= @professor.endereco %>">
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-4 form-group" onclick="window.location.reload(true);">  
+		<%= link_to 'Alterar Dados', edit_professor_path(@professor), :class => "btn btn-primary", :style=> 'color:#AAAAAA' %>
+		<%= link_to 'Voltar',  professors_path, :class => "btn btn-primary", :style=> 'color:#FFFFFF'%>
+	</div>
+</div>

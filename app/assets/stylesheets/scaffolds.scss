@@ -20,16 +20,22 @@ pre {
 }
 
 a {
-  color: #000;
+  color: grey;
 
   &:visited {
-    color: #666;
+    color: black;
   }
 
   &:hover {
     color: #fff;
-    background-color: #000;
+    background-color: white;
   }
+}
+
+.sidebar ul li a.active {
+  border-left: 4px solid lightsteelblue;
+  color: black;
+  background-color: rgb(176,196,222);
 }
 
 th {
