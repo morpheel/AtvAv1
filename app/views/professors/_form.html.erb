@@ -37,8 +37,8 @@
     </div>
     <div class="row">
       <div class="col-lg-7 form-group">  
-        <input type="submit" name="commit" class="btn btn-primary" value="Salvar" data-disable-with="Salvando Professor..."  onclick="window.location.reload(true);"/>
-        <%= link_to 'Voltar', '/professors/', :class => "btn btn-primary", :style=> 'color:#AAAAAA', :onclick => 'window.location.reload(true);' %>
+        <input type="submit" name="commit" class="btn btn-primary" value="Salvar" data-disable-with="Salvando Professor..."/>
+        <%= link_to 'Voltar', professor_path, :class => "btn btn-primary", :style=> 'color:#AAAAAA', :onclick => 'window.location.reload(true);' %>
       </div>
     </div>
   <% end %>

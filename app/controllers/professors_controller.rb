@@ -10,7 +10,24 @@ class ProfessorsController < ApplicationController
       Professor.order(:nome).page(params[:page])
     end
   end
-
+  def relatorioExcel
+    @professors = Professor.all
+      respond_to do |form|
+        form.html
+        form.xlsx {
+          response.headers["Content-Disposition"] = "attachment; filename=\"relatorioExcel.xlsx\""
+        }
+      end
+  end
+    def relatorioPDF
+    @professors = Professor.all
+    respond_to do |format|
+      format.pdf do
+        pdf = RelatorioProfessorPdf.new(@professors, view_context, :portrait)
+        send_data pdf.render, filename: "relatorioProfessores.pdf", type: "application/pdf", disposition: "inline"
+      end
+    end
+  end
   # GET /professors/1
   # GET /professors/1.json
   def show
