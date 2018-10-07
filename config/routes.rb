@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :avaliacaos
   resources :mat_turmas
   resources :turmas
   resources :horas

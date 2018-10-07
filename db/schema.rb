@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_06_162449) do
+ActiveRecord::Schema.define(version: 2018_10_07_112724) do
 
   create_table "alunos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nome"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 2018_10_06_162449) do
     t.index ["created_at"], name: "index_audits_on_created_at"
     t.index ["request_uuid"], name: "index_audits_on_request_uuid"
     t.index ["user_id", "user_type"], name: "user_index"
+  end
+
+  create_table "avaliacaos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "nome"
+    t.string "data"
+    t.bigint "disciplina_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["disciplina_id"], name: "index_avaliacaos_on_disciplina_id"
   end
 
   create_table "disciplinas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -78,6 +87,16 @@ ActiveRecord::Schema.define(version: 2018_10_06_162449) do
     t.index ["turma_id"], name: "index_mat_turmas_on_turma_id"
   end
 
+  create_table "nota", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "nota"
+    t.bigint "mat_disc_id"
+    t.bigint "avaliacao_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["avaliacao_id"], name: "index_nota_on_avaliacao_id"
+    t.index ["mat_disc_id"], name: "index_nota_on_mat_disc_id"
+  end
+
   create_table "professors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nome"
     t.string "email"
@@ -105,11 +124,14 @@ ActiveRecord::Schema.define(version: 2018_10_06_162449) do
     t.index ["sala_id"], name: "index_turmas_on_sala_id"
   end
 
+  add_foreign_key "avaliacaos", "disciplinas"
   add_foreign_key "disciplinas", "professors"
   add_foreign_key "mat_discs", "disciplinas"
   add_foreign_key "mat_discs", "mat_turmas"
   add_foreign_key "mat_turmas", "alunos"
   add_foreign_key "mat_turmas", "turmas"
+  add_foreign_key "nota", "avaliacaos"
+  add_foreign_key "nota", "mat_discs"
   add_foreign_key "turmas", "horas"
   add_foreign_key "turmas", "salas"
 end
