@@ -4,7 +4,11 @@ class SalasController < ApplicationController
   # GET /salas
   # GET /salas.json
   def index
-    @salas = Sala.order(:bloco).page(params[:page])
+    @salas = if params[:nome]
+      Sala.where('numSala LIKE ?', "%#{params[:nome]}%").order(:bloco).page(params[:page])
+    else
+      Sala.order(:bloco).page(params[:page])
+    end
   end
 
   # GET /salas/1

@@ -4,7 +4,30 @@ class AlunosController < ApplicationController
   # GET /alunos
   # GET /alunos.json
   def index
-    @alunos = Aluno.order(:nome).page(params[:page])
+    @alunos = if params[:nome]
+      Aluno.where('nome LIKE ?', "%#{params[:nome]}%").order(:nome).page(params[:page])
+    else
+      Aluno.order(:nome).page(params[:page])
+    end
+  end
+
+  def relatorioExcel
+    @alunos = Aluno.all
+      respond_to do |form|
+        form.html
+        form.xlsx {
+          response.headers["Content-Disposition"] = "attachment; filename=\"relatorioAlunos.xlsx\""
+        }
+      end
+  end
+    def relatorioPDF
+    @alunos = Aluno.all
+    respond_to do |format|
+      format.pdf do
+        pdf = RelatorioAlunoPdf.new(@alunos, view_context, :landscape)
+        send_data pdf.render, filename: "relatorioAlunos.pdf", type: "application/pdf", disposition: "inline"
+      end
+    end
   end
 
   # GET /alunos/1

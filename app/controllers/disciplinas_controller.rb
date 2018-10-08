@@ -4,7 +4,30 @@ class DisciplinasController < ApplicationController
   # GET /disciplinas
   # GET /disciplinas.json
   def index
-    @disciplinas = Disciplina.order(:nome).page(params[:page])
+    @disciplinas  = if params[:nome]
+      Disciplina.where('nome LIKE ?', "%#{params[:nome]}%").order(:nome).page(params[:page])
+    else
+      Disciplina.order(:nome).page(params[:page])
+    end
+  end
+
+  def relatorioExcel
+    @disciplinas = Disciplina.all
+      respond_to do |form|
+        form.html
+        form.xlsx {
+          response.headers["Content-Disposition"] = "attachment; filename=\"relatorioDisciplinas.xlsx\""
+        }
+      end
+  end
+    def relatorioPDF
+    @disciplinas = Disciplina.all
+    respond_to do |format|
+      format.pdf do
+        pdf = RelatorioDisciplinaPdf.new(@disciplinas, view_context, :landscape)
+        send_data pdf.render, filename: "relatorioDisciplinas.pdf", type: "application/pdf", disposition: "inline"
+      end
+    end
   end
 
   # GET /disciplinas/1

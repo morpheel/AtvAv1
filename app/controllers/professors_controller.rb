@@ -15,7 +15,7 @@ class ProfessorsController < ApplicationController
       respond_to do |form|
         form.html
         form.xlsx {
-          response.headers["Content-Disposition"] = "attachment; filename=\"relatorioExcel.xlsx\""
+          response.headers["Content-Disposition"] = "attachment; filename=\"relatorioProfessores.xlsx\""
         }
       end
   end
@@ -23,7 +23,7 @@ class ProfessorsController < ApplicationController
     @professors = Professor.all
     respond_to do |format|
       format.pdf do
-        pdf = RelatorioProfessorPdf.new(@professors, view_context, :portrait)
+        pdf = RelatorioProfessorPdf.new(@professors, view_context, :landscape)
         send_data pdf.render, filename: "relatorioProfessores.pdf", type: "application/pdf", disposition: "inline"
       end
     end

@@ -4,7 +4,11 @@ class TurmasController < ApplicationController
   # GET /turmas
   # GET /turmas.json
   def index
-    @turmas = Turma.order(:nome).page(params[:page])
+    @turmas = if params[:nome]
+      Turma.where('nome LIKE ?', "%#{params[:nome]}%").order(:nome).page(params[:page])
+    else
+      Turma.order(:nome).page(params[:page])
+    end
   end
 
   # GET /turmas/1
