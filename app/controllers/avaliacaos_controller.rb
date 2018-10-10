@@ -1,6 +1,6 @@
 class AvaliacaosController < ApplicationController
   before_action :set_avaliacao, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_usuario!, only: [:index, :new]
   # GET /avaliacaos
   # GET /avaliacaos.json
   def index

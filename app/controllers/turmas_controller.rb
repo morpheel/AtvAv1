@@ -1,6 +1,6 @@
 class TurmasController < ApplicationController
   before_action :set_turma, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_usuario!, only: [:index, :new]
   # GET /turmas
   # GET /turmas.json
   def index

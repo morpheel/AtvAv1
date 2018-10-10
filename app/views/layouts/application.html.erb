@@ -25,86 +25,85 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/" style="color: #FFF">Algoaqui</a>
+                <a class="navbar-brand" href="/" style="color: #FFF">Sistema Escolar</a>
             </div>
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
                 <!-- /.dropdown -->
+                <!-- Mensagens do Devise(Notice/Alert) -->
+                <li class="container-fluid">
+                    <li class="notice" style="text-align: center; padding-top: 0%"><%= notice %>  <%= alert %></li>
+                </li>
+                <% if current_usuario != nil %>
                 <li class="dropdown" style="color:black">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: #4682B4; border-radius: 100px; border-style: ridge; border-width: 1px; border-color: #4682CC #4682DD #4682DD">
-                        <i class="fa fa-user fa-fw" style="color:white"></i> <i class="fa fa-caret-down" style="color:white"></i>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background-color: #4682B4; border-radius: 100px; border-style: ridge; border-width: 1px; border-color: #4682CC #4682DD #4682DD; color: #ffffff">
+                        Bem-vindo, <%= current_usuario.login %> <i class="fa fa-user fa-fw" style="color:white"></i> <i class="fa fa-caret-down" style="color:white"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="/usuarios/edit"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><%=link_to 'Log Out', destroy_usuario_session_path, method: :delete %>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
+                <% end %>
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
-
             <div class="navbar-default sidebar" role="navigation" style="background-color: white">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
                         <li>
-                            <a href=".." onclick="window.location.reload(true);"><i class="fa fa fa fa-group fa-fw"></i> Início</a> 
+                            <a href="/" onclick="window.location.reload(true);"><i class="fa fa fa fa-home fa-fw"></i> Página Inicial</a> 
                         </li>
-                        <li>
-                            <a href="/professors/" onclick="window.location.reload(true);"><i class="fa fa fa fa-group fa-fw"></i> Professores</a> 
-                        </li>
-                        <li>
-                            <a href="/funcionarios/" onclick="window.location.reload(true);"><i class="fa fa fa fa-group fa-fw"></i> Funcionários</a> 
-                        </li>
-                        <li>
-                            <a href="#" style="color:black"><i class="fa fa-group fa-fw"></i> Estudantil<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="/alunos/" onclick="window.location.reload(true);"><i class="fa fa fa fa-group fa-fw"></i> Lista de Alunos</a>
-                                </li>
-                                <li>
-                                    <a href="/avaliacaos/" onclick="window.location.reload(true);"><i class="fa fa fa fa-group fa-fw"></i> Avaliações</a>
-                                </li>
-                                <li>
-                                    <a href="/mat_turmas/" onclick="window.location.reload(true);"><i class="fa fa-edit fa-fw"></i> Matricular em Turma</a> 
-                                </li>
-                            </ul>
-                        </li>
+                        <% if current_usuario == nil %>
+                            <li>
+                                <a href="/usuarios/sign_in" onclick="window.location.reload(true);"><i class="fa fa fa fa-home fa-fw"></i> Login</a> 
+                            </li>
+                        <% end %>
+                        <% if current_usuario != nil %>
+                            <li>
+                                <a href="/professors/" onclick="window.location.reload(true);"><i class="fa fa fa fa-group fa-fw"></i> Professores</a> 
+                            </li>
+                            <li>
+                                <a href="/funcionarios/" onclick="window.location.reload(true);"><i class="fa fa fa fa-group fa-fw"></i> Funcionários</a> 
+                            </li>
+                            <li>
+                                <a href="#" style="color:black"><i class="fa fa-group fa-fw"></i> Estudantil<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="/alunos/" onclick="window.location.reload(true);"><i class="fa fa fa fa-group fa-fw"></i> Lista de Alunos</a>
+                                    </li>
+                                    <li>
+                                        <a href="/avaliacaos/" onclick="window.location.reload(true);"><i class="fa fa fa fa-group fa-fw"></i> Avaliações</a>
+                                    </li>
+                                    <li>
+                                        <a href="/mat_turmas/" onclick="window.location.reload(true);"><i class="fa fa-edit fa-fw"></i> Matricular em Turma</a> 
+                                    </li>
+                                </ul>
+                            </li>
 
-                        <li>
-                            <a href="#" style="color:black"><i class="fa fa-cogs fa-fw"></i> Gerenciamento<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="/relatorios/" onclick="window.location.reload(true);"><i class="fa fa-book fa-fw"></i> Relatorios - Temp</a>
-                                <li>
-                                    <a href="/disciplinas/" onclick="window.location.reload(true);"><i class="fa fa-book fa-fw"></i> Disciplinas</a> 
-                                </li>
-                                <li>
-                                    <a href="/turmas/" onclick="window.location.reload(true);"><i class="fa fa-folder-o fa-fw"></i> Lista de Turmas</a>
-                                </li>
-                                <li>
-                                    <a href="/salas/" onclick="window.location.reload(true);"><i class="fa fa-folder-o fa-fw"></i> Lista de Salas</a> 
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+                            <li>
+                                <a href="#" style="color:black"><i class="fa fa-cogs fa-fw"></i> Gerenciamento<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="/relatorios/" onclick="window.location.reload(true);"><i class="fa fa-book fa-fw"></i> Relatorios - Temp</a>
+                                    <li>
+                                        <a href="/disciplinas/" onclick="window.location.reload(true);"><i class="fa fa-book fa-fw"></i> Disciplinas</a> 
+                                    </li>
+                                    <li>
+                                        <a href="/turmas/" onclick="window.location.reload(true);"><i class="fa fa-folder-o fa-fw"></i> Lista de Turmas</a>
+                                    </li>
+                                    <li>
+                                        <a href="/salas/" onclick="window.location.reload(true);"><i class="fa fa-folder-o fa-fw"></i> Lista de Salas</a> 
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                        <% end %>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

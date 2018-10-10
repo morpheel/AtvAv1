@@ -1,6 +1,6 @@
 class SalasController < ApplicationController
   before_action :set_sala, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_usuario!, only: [:index, :new]
   # GET /salas
   # GET /salas.json
   def index

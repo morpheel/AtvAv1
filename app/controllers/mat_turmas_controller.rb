@@ -1,6 +1,6 @@
 class MatTurmasController < ApplicationController
   before_action :set_mat_turma, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_usuario!, only: [:index, :new]
   # GET /mat_turmas
   # GET /mat_turmas.json
   def index

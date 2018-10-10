@@ -1,6 +1,6 @@
 class FuncionariosController < ApplicationController
   before_action :set_funcionario, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_usuario!, only: [:index, :new]
   # GET /funcionarios
   # GET /funcionarios.json
   def index

@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  get 'pages/index'
+  devise_for :usuarios
+  devise_scope :usuarios do
+    get "login", :to => "devise/sessions#new"
+    get "register", :to => "devise/registrations#new"
+    get "settings", :to => "devise/registrations#edit"
+    get "logout",   :to => "devise/sessions#destroy"
+
+  end
   resources :funcionarios, :path=>"funcionarios" do
     collection do
       get "/relatorioExcel" => "funcionarios#relatorioExcel", :as => "relatorioExcel"
@@ -29,6 +38,6 @@ Rails.application.routes.draw do
     end
   end
   resources :relatorios
-  root :to => 'professors#index'
+  root :to => 'pages#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
