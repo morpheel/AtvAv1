@@ -1,0 +1,51 @@
+<div class="funcionario form">
+  <%= form_with(model: funcionario, local: true) do |form| %>
+    <% if funcionario.errors.any? %>
+      <div id="error_explanation" class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= pluralize(funcionario.errors.count, "error") %> ao salvar funcionario:</h3>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <% funcionario.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    <!-- Campos do formulário -->
+    <div class="row">
+      <div class="col-lg-1 form-group" >  
+        <%= form.label :id, 'ID', :class => 'control-label' %>                 
+        <%= form.text_field :id, :class => 'form-control' %>
+      </div>
+      <div class="col-lg-5 form-group">   
+        <%= form.label :nome, :class => 'control-label' %>
+        <%= form.text_field :nome, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-2 form-group" >  
+        <%= form.label :telefone, :class => 'control-label' %>                 
+        <%= form.text_field :telefone, :class => 'form-control' %>
+      </div>
+      <div class="col-lg-4 form-group" >  
+        <%= form.label :endereco, 'Endereço', :class => 'control-label' %>                 
+        <%= form.text_field :endereco, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 form-group">
+        <%= form.label :salario, :class => 'control-label' %>
+        <%= form.text_field :salario, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-7 form-group">  
+        <input type="submit" name="commit" class="btn btn-primary" value="Salvar" data-disable-with="Salvando Funcionario..."/>
+        <%= link_to 'Voltar', funcionarios_path, :class => "btn btn-primary", :style=> 'color:#AAAAAA', :onclick => 'window.location.reload(true);' %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nota: MyString
+  mat_disc: one
+  avaliacao: one
+
+two:
+  nota: MyString
+  mat_disc: two
+  avaliacao: two

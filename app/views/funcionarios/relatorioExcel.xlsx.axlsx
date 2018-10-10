@@ -1,0 +1,13 @@
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+	textcomum = style.add_style(alignment: {horizontal: :center})
+	textbold = style.add_style(b:true, alignment: {horizontal: :center})
+	wb.add_worksheet(name: "Funcionários") do |sheet|
+		sheet.add_row ["ID", "Nome", "Telefone", "Endereço", "Salario"], style: textbold
+		sheet.column_widths 10,45,30,40,20
+		@funcionarios.each do |funcionario|
+			sheet.add_row [funcionario.id, funcionario.nome, funcionario.telefone, funcionario.endereco, funcionario.salario], style: textcomum
+		end
+	end
+end

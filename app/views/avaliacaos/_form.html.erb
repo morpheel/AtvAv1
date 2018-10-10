@@ -1,0 +1,32 @@
+<%= form_with(model: avaliacao, local: true) do |form| %>
+  <% if avaliacao.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(avaliacao.errors.count, "error") %> prohibited this avaliacao from being saved:</h2>
+
+      <ul>
+      <% avaliacao.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :data %>
+    <%= form.text_field :data %>
+  </div>
+
+  <div class="field">
+    <%= form.label :disciplina_id %>
+    <%= form.text_field :disciplina_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

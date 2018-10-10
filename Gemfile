@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+#Login
+gem 'devise'
+
 #Bootstrap
 gem 'bootstrap_sb_admin_base_v2'
 gem 'jquery'
