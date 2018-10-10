@@ -23,8 +23,7 @@
       <tr>
         <th width="5%"><i class="fa fa-user-o"></i>  ID:</th>
         <th width="23%"><i class="fa fa-address-card-o"></i>  Nome</th>
-        <th width="10%"><i class="fa fa-mobile"></i>  Sala</th>
-        <th width="20%"><i class="fa fa-map-marker"></i>  Horário</th>
+        <th width="10%"><i class="fa fa-tag"></i>  Sala</th>
         <th width="12%" class="text-center"><i class="fa fa-gears fa-fw"></i></th>
       </tr>
     </thead>
@@ -34,7 +33,6 @@
           <td><%= turma.id %></td>
           <td><%= turma.nome %></td>
           <td><%= turma.sala.salabloco %></td>
-          <td><%= turma.hora.iniciofim %></td>
           <td class="text-center" onclick="window.location.reload(true);"><%= link_to 'Visualizar', turma, :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px;' %>
           <%= link_to 'Alterar', edit_turma_path(turma), :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px' %>
           <%= link_to 'Remover', turma, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom: 2px' %></td>

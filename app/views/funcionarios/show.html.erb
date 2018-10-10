@@ -1,24 +1,37 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Nome:</strong>
-  <%= @funcionario.nome %>
-</p>
-
-<p>
-  <strong>Telefone:</strong>
-  <%= @funcionario.telefone %>
-</p>
-
-<p>
-  <strong>Endereco:</strong>
-  <%= @funcionario.endereco %>
-</p>
-
-<p>
-  <strong>Salario:</strong>
-  <%= @funcionario.sal %>
-</p>
-
-<%= link_to 'Edit', edit_funcionario_path(@funcionario) %> |
-<%= link_to 'Back', funcionarios_path %>
+<div class="row">
+	<div class="col-lg-6">
+	    <h2 class="page-header" style="margin-left: 0%;border-bottom-style: default; border-bottom-width: 1px; border-bottom-color: black;">Dados do Funcionário</h2>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-1 form-group" >
+  		<label class = 'control-label'>ID</label>
+		<input rows="1" readonly="true" class = 'form-control' value="<%= @funcionario.id %>">          
+    </div>
+    <div class="col-lg-5 form-group">   
+      	<label class = 'control-label'>Nome</label>
+      	<input readonly="true" class = 'form-control' value="<%= @funcionario.nome %>">
+    </div>
+</div> 
+<div class="row">
+	<div class="col-lg-2 form-group">
+		<label class = 'control-label'>Telefone</label>
+		<input readonly="true" class='form-control' value="<%= @funcionario.telefone %>">
+	</div>
+	<div class="col-lg-4 form-group">
+		<label class = 'control-label'>Endereço</label>
+		<input readonly="true" class='form-control' value="<%= @funcionario.endereco %>">
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-2 form-group">
+      	<label class = 'control-label'>Salário</label>
+		<input readonly="true" class='form-control' value="<%= @funcionario.sal %>">
+    </div>
+</div>
+<div class="row">
+	<div class="col-lg-4 form-group" onclick="window.location.reload(true);">  
+		<%= link_to 'Alterar Dados', edit_funcionario_path(@funcionario), :class => "btn btn-primary", :style=> 'color:#AAAAAA' %>
+		<%= link_to 'Voltar',  funcionarios_path, :class => "btn btn-primary", :style=> 'color:#FFFFFF'%>
+	</div>
+</div>

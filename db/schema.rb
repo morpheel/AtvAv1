@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_10_183256) do
+ActiveRecord::Schema.define(version: 2018_10_10_215227) do
 
   create_table "alunos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nome"
@@ -124,6 +124,16 @@ ActiveRecord::Schema.define(version: 2018_10_10_183256) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "provas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.float "nota"
+    t.bigint "avaliacao_id"
+    t.bigint "mat_disc_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["avaliacao_id"], name: "index_provas_on_avaliacao_id"
+    t.index ["mat_disc_id"], name: "index_provas_on_mat_disc_id"
+  end
+
   create_table "salas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "numSala"
     t.string "bloco"
@@ -135,10 +145,8 @@ ActiveRecord::Schema.define(version: 2018_10_10_183256) do
   create_table "turmas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nome"
     t.bigint "sala_id"
-    t.bigint "hora_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["hora_id"], name: "index_turmas_on_hora_id"
     t.index ["sala_id"], name: "index_turmas_on_sala_id"
   end
 
@@ -153,6 +161,8 @@ ActiveRecord::Schema.define(version: 2018_10_10_183256) do
     t.string "nome"
     t.string "login"
     t.index ["email"], name: "index_usuarios_on_email", unique: true
+    t.index ["login"], name: "login"
+    t.index ["login"], name: "login_2", unique: true
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end
 
@@ -166,6 +176,7 @@ ActiveRecord::Schema.define(version: 2018_10_10_183256) do
   add_foreign_key "mat_turmas", "turmas"
   add_foreign_key "nota", "avaliacaos"
   add_foreign_key "nota", "mat_discs"
-  add_foreign_key "turmas", "horas"
+  add_foreign_key "provas", "avaliacaos"
+  add_foreign_key "provas", "mat_discs"
   add_foreign_key "turmas", "salas"
 end

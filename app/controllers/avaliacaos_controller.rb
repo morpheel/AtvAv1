@@ -15,6 +15,7 @@ class AvaliacaosController < ApplicationController
   # GET /avaliacaos/new
   def new
     @avaliacao = Avaliacao.new
+    @notas = @avaliacao.notas.build
   end
 
   # GET /avaliacaos/1/edit
