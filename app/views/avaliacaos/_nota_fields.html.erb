@@ -1,0 +1,12 @@
+<div class="nested-fields">
+	<div class="field">
+		<%= f.label :nota %>
+		<%= f.text_field :nota %>
+	</div>
+	<div class="field">
+		<%= f.label :mat_disc_id, "Nota Aluno" %>
+		<%= f.collection_select(:mat_disc_id, MatDisc.all, :id, :mat_turma_id, {prompt: "Aluno"}) %>
+	</div>
+	<%= link_to_remove_association "Remover Nota", f %>
+	<br><br><br>
+</div>
