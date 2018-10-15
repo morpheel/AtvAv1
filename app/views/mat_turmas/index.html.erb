@@ -33,7 +33,7 @@
           <td><%= mat_turma.id %></td>
           <td><%= mat_turma.aluno.nome %></td>
           <td><%= mat_turma.turma.nome %></td>
-          <td class="text-center" onclick="window.location.reload(true);"><%= link_to 'Visualizar', mat_turma, :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px;' %>
+          <td class="text-center"><%= link_to 'Visualizar', mat_turma, :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px;' %>
           <%= link_to 'Alterar', edit_mat_turma_path(mat_turma), :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px' %>
           <%= link_to 'Remover', mat_turma, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom: 2px' %></td>
         </tr>

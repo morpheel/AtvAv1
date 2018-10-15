@@ -4,7 +4,6 @@ class CreateDisciplinas < ActiveRecord::Migration[5.2]
       t.string :nome
       t.string :cargaHoraria
       t.references :professor, foreign_key: true
-      t.references :turma, foreign_key: true
 
       t.timestamps
     end

@@ -35,7 +35,7 @@
           <td><%= aluno.nome %></td>
           <td><%= aluno.dataNasc %></td>
           <td><%= aluno.endereco %></td>
-          <td class="text-center" onclick="window.location.reload(true);"><%= link_to 'Visualizar', aluno, :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px;' %>
+          <td class="text-center" ><%= link_to 'Visualizar', aluno, :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px;' %>
           <%= link_to 'Alterar', edit_aluno_path(aluno), :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px' %>
           <%= link_to 'Remover', aluno, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom: 2px' %></td>
         </tr>

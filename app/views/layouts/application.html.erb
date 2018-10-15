@@ -57,12 +57,12 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="/" onclick="window.location.reload(true);"><i class="fa fa fa fa-home fa-fw"></i> Página Inicial</a> 
+                            <a href="/"><i class="fa fa fa fa-home fa-fw"></i> Página Inicial</a> 
                         </li>
                         
                         <% if current_usuario == nil %>
                             <li>
-                                <a href="/usuarios/sign_in" onclick="window.location.reload(true);"><i class="fa fa fa fa-home fa-fw"></i> Login</a> 
+                                <a href="/usuarios/sign_in"><i class="fa fa fa fa-home fa-fw"></i> Login</a> 
                             </li>
                         <% end %>
                         <% if current_usuario != nil %>

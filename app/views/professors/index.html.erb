@@ -37,7 +37,7 @@
           <td><%= professor.telefone %></td>
           <td><%= professor.endereco %></td>
           <td><%= professor.email %></td>
-          <td class="text-center" onclick="window.location.reload(true);"><%= link_to 'Visualizar', professor, :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px;' %>
+          <td class="text-center"><%= link_to 'Visualizar', professor, :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px;' %>
           <%= link_to 'Alterar', edit_professor_path(professor), :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px' %>
           <%= link_to 'Remover', professor, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom: 2px' %></td>
         </tr>

@@ -1,15 +1,15 @@
-<h2>Forgot your password?</h2>
+<h2 class="page-header" style="margin-left: 0%;border-bottom-style: default; border-bottom-width: 1px; border-bottom-color: black;">Esqueceu sua senha?</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="field", style="width: 400px">
+    <%= f.label :email, :class => 'control-label' %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit "Envie-me instruções para recuperação de senha!", :class => "btn btn-primary", :style=> 'color:#FFF' %>
   </div>
 <% end %>
 

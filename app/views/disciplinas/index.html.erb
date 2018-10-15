@@ -37,7 +37,7 @@
           <td><%= disciplina.ch %></td>
           <td><%= disciplina.professor.nome %></td>
           <td><%= disciplina.turma.nome %></td>
-          <td class="text-center" onclick="window.location.reload(true);"><%= link_to 'Visualizar', disciplina, :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px;' %>
+          <td class="text-center" ><%= link_to 'Visualizar', disciplina, :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px;' %>
           <%= link_to 'Alterar', edit_disciplina_path(disciplina), :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px' %>
           <%= link_to 'Remover', disciplina, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom: 2px' %></td>
         </tr>
