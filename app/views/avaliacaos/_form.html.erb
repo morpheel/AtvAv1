@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :nome %>
-    <%= form.text_field :nome %>
+    <%= form.label :descricao %>
+    <%= form.text_field :descricao %>
   </div>
 
   <div class="field">
@@ -23,17 +23,7 @@
 
   <div class="field">
     <%= form.label :disciplina_id %>
-    <%= form.collection_select(:disciplina_id, Disciplina.all, :id, :nome, {prompt: "Selecionar Disciplina"}) %>
-  </div>
-
-  <h2> Nota </h2>
-  <div id="notas">
-    <%= form.fields_for :notas do |nota| %>
-      <%= render 'nota_fields', f: nota %>
-    <% end %>
-    <div class="links">
-      <%= link_to_add_association 'Adicionar Nota', form, :notas %>
-    </div>
+    <%= form.collection_select(:disciplina_id, Disciplina.all, :id, :nome, prompt: "Selecionar") %>
   </div>
 
   <div class="actions">

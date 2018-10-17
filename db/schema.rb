@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_15_001255) do
+ActiveRecord::Schema.define(version: 2018_10_17_223638) do
 
   create_table "alunos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nome"
@@ -43,11 +43,11 @@ ActiveRecord::Schema.define(version: 2018_10_15_001255) do
   end
 
   create_table "avaliacaos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "nome"
     t.string "data"
     t.bigint "disciplina_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "descricao"
     t.index ["disciplina_id"], name: "index_avaliacaos_on_disciplina_id"
   end
 
@@ -60,6 +60,14 @@ ActiveRecord::Schema.define(version: 2018_10_15_001255) do
     t.bigint "turma_id"
     t.index ["professor_id"], name: "index_disciplinas_on_professor_id"
     t.index ["turma_id"], name: "index_disciplinas_on_turma_id"
+  end
+
+  create_table "frequenciaalunos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.date "data"
+    t.bigint "disciplina_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["disciplina_id"], name: "index_frequenciaalunos_on_disciplina_id"
   end
 
   create_table "funcionarios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -96,14 +104,14 @@ ActiveRecord::Schema.define(version: 2018_10_15_001255) do
     t.index ["turma_id"], name: "index_mat_turmas_on_turma_id"
   end
 
-  create_table "nota", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "nota"
+  create_table "presencas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.boolean "presenca"
     t.bigint "mat_disc_id"
-    t.bigint "avaliacao_id"
+    t.bigint "frequenciaaluno_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["avaliacao_id"], name: "index_nota_on_avaliacao_id"
-    t.index ["mat_disc_id"], name: "index_nota_on_mat_disc_id"
+    t.index ["frequenciaaluno_id"], name: "index_presencas_on_frequenciaaluno_id"
+    t.index ["mat_disc_id"], name: "index_presencas_on_mat_disc_id"
   end
 
   create_table "professors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -116,9 +124,9 @@ ActiveRecord::Schema.define(version: 2018_10_15_001255) do
   end
 
   create_table "provas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.float "nota"
     t.bigint "avaliacao_id"
     t.bigint "mat_disc_id"
+    t.float "nota"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["avaliacao_id"], name: "index_provas_on_avaliacao_id"
@@ -136,8 +144,10 @@ ActiveRecord::Schema.define(version: 2018_10_15_001255) do
   create_table "turmas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nome"
     t.bigint "sala_id"
+    t.bigint "hora_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["hora_id"], name: "index_turmas_on_hora_id"
     t.index ["sala_id"], name: "index_turmas_on_sala_id"
   end
 
@@ -152,21 +162,22 @@ ActiveRecord::Schema.define(version: 2018_10_15_001255) do
     t.string "nome"
     t.string "login"
     t.index ["email"], name: "index_usuarios_on_email", unique: true
-    t.index ["login"], name: "login"
-    t.index ["login"], name: "login_2", unique: true
+    t.index ["login"], name: "index_usuarios_on_login", unique: true
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
   end
 
   add_foreign_key "avaliacaos", "disciplinas"
   add_foreign_key "disciplinas", "professors"
   add_foreign_key "disciplinas", "turmas"
+  add_foreign_key "frequenciaalunos", "disciplinas"
   add_foreign_key "mat_discs", "disciplinas"
   add_foreign_key "mat_discs", "mat_turmas"
   add_foreign_key "mat_turmas", "alunos"
   add_foreign_key "mat_turmas", "turmas"
-  add_foreign_key "nota", "avaliacaos"
-  add_foreign_key "nota", "mat_discs"
+  add_foreign_key "presencas", "frequenciaalunos"
+  add_foreign_key "presencas", "mat_discs"
   add_foreign_key "provas", "avaliacaos"
   add_foreign_key "provas", "mat_discs"
+  add_foreign_key "turmas", "horas"
   add_foreign_key "turmas", "salas"
 end

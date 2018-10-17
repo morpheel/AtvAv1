@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  avaliacao: one
+  presenca: false
   mat_disc: one
-  nota: 1.5
+  frequenciaaluno: one
 
 two:
-  avaliacao: two
+  presenca: false
   mat_disc: two
-  nota: 1.5
+  frequenciaaluno: two

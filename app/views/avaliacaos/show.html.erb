@@ -2,7 +2,7 @@
 
 <p>
   <strong>Nome:</strong>
-  <%= @avaliacao.nome %>
+  <%= @avaliacao.descricao %>
 </p>
 
 <p>
@@ -12,8 +12,14 @@
 
 <p>
   <strong>Disciplina:</strong>
-  <%= @avaliacao.disciplina %>
+  <%= @avaliacao.disciplina.nome %>
 </p>
-
+<h3>Alunos</h3>
+<% @avaliacao.provas.each do |prova| %>
+  <p>
+  <strong><%= prova.aluno_nome %>:</strong>
+  <%= prova.nota %>
+</p>
+<% end %>
 <%= link_to 'Edit', edit_avaliacao_path(@avaliacao) %> |
 <%= link_to 'Back', avaliacaos_path %>

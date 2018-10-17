@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :frequenciaalunos, :path => "frequenciaalunos" do
+    collection do
+      get "/presencas/:id" => "frequenciaalunos#presencas", :as => "presencas"     
+    end
+  end
   get 'pages/index'
   devise_for :usuarios
   devise_scope :usuarios do
@@ -14,7 +19,12 @@ Rails.application.routes.draw do
       get "/relatorioPDF" => "funcionarios#relatorioPDF", :as => "relatorioPDF"
     end
   end
-  resources :avaliacaos
+  resources :avaliacaos, :path => "avaliacaos" do
+    collection do
+      get "/provas/:id" => "avaliacaos#provas", :as => "provas"
+      get "/relatorioExcel" => "avaliacaos#relatorioExcel", :as => "relatorioExcel"
+    end
+  end
   resources :mat_turmas
   resources :turmas
   resources :horas

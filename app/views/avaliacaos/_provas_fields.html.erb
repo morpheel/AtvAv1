@@ -1,0 +1,7 @@
+<div class="nested-fields">
+	<div class="field">
+		<%= f.label f.object.aluno_nome %>
+    	<%= f.number_field :nota %>
+	</div>
+	<%= f.hidden_field :mat_disc_id, :value=>f.object.mat_disc_id.to_i %>
+</div>

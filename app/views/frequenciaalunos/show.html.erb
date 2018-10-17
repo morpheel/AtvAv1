@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @frequenciaaluno.data %>
+</p>
+
+<p>
+  <strong>Disciplina:</strong>
+  <%= @frequenciaaluno.disciplina %>
+</p>
+<h3>Alunos</h3>
+<% @frequenciaaluno.presencas.each do |presenca| %>
+  <p>
+  <strong><%= presenca.aluno_nome %></strong>
+  <% if presenca.presenca %>
+    <input type="checkbox" name="presenca" value="true" checked disabled> 
+  <% else %>
+     <input type="checkbox" name="presenca" value="false" disabled>
+  <% end %>
+</p>
+<% end %>
+<%= link_to 'Edit', edit_frequenciaaluno_path(@frequenciaaluno) %> |
+<%= link_to 'Back', frequenciaalunos_path %>

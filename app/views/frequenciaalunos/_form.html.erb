@@ -1,0 +1,32 @@
+<%= form_with(model: frequenciaaluno, local: true) do |form| %>
+  <% if frequenciaaluno.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(frequenciaaluno.errors.count, "error") %> prohibited this frequenciaaluno from being saved:</h2>
+
+      <ul>
+      <% frequenciaaluno.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :data %>
+    <%= form.date_select :data %>
+  </div>
+
+  <div class="field">
+    <%= form.label :disciplina_id %>
+    <%= form.text_field :disciplina_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :disciplina_id %>
+    <%= form.collection_select(:disciplina_id, Disciplina.all, :id, :nome, prompt: "Selecionar") %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -41,10 +41,10 @@
                         Bem-vindo, <%= current_usuario.login %> <i class="fa fa-user fa-fw" style="color:white"></i> <i class="fa fa-caret-down" style="color:white"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="/usuarios/edit"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        <li><a href="/usuarios/edit"><i class="fa fa-gear fa-fw"></i> Configurações</a>
                         </li>
                         <li class="divider"></li>
-                        <li><%=link_to 'Log Out', destroy_usuario_session_path, method: :delete %>
+                        <li><%=link_to 'Sair', destroy_usuario_session_path, method: :delete %>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

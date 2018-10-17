@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Frequenciaalunos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Disciplina</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @frequenciaalunos.each do |frequenciaaluno| %>
+      <tr>
+        <td><%= frequenciaaluno.data %></td>
+        <td><%= frequenciaaluno.disciplina %></td>
+        <td><%= link_to 'Show', frequenciaaluno %></td>
+        <td><%= link_to 'Edit', edit_frequenciaaluno_path(frequenciaaluno) %></td>
+        <td><%= link_to 'Presença', presencas_frequenciaalunos_path(frequenciaaluno) %></td>
+        <td><%= link_to 'Destroy', frequenciaaluno, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Frequenciaaluno', new_frequenciaaluno_path %>

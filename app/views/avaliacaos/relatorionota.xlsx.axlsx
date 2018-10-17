@@ -1,0 +1,33 @@
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+	textnegrito = style.add_style(b: true,
+                                 border: Axlsx::STYLE_THIN_BORDER,
+                                 alignment: { horizontal: :center })
+
+	text = style.add_style(alignment: { horizontal: :center })
+
+wb.add_worksheet(name: "Notas") do |sheet|
+
+sheet.merge_cells("A1:B1")
+imprimiu = 1
+@listaMatriculas.each do |relatorio|
+    if imprimiu == 1
+       sheet.add_row ["Disciplina: "+ relatorio.disciplina.nome + "          Turma: "+ relatorio.matricula.turma.nome], :style => textnegrito
+       imprimiu = 0      
+    end
+end
+
+
+
+sheet.add_row ["Nome","Nota"], :style => textnegrito
+
+  
+
+  @avaliacao.provas.each do |prova| 
+    sheet.add_row [prova.aluno_nome, prova.nota], :style => text
+    sheet.column_widths 30, 25
+  end
+  
+end
+end

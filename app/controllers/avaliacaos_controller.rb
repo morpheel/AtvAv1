@@ -10,17 +10,73 @@ class AvaliacaosController < ApplicationController
   # GET /avaliacaos/1
   # GET /avaliacaos/1.json
   def show
+    listaMatriculas = MatDisc.select("*")
+    .joins("LEFT JOIN mat_turmas on mat_turmas.id = mat_discs.mat_turma_id")
+    .joins("LEFT JOIN alunos on alunos.id = mat_turmas.aluno_id")
+    .where("mat_discs.disciplina_id="+@avaliacao.disciplina_id.to_s)
+    listaMatriculas.each do |matricula| #lista todos os alunos matriculados na disciplina e turma
+      @avaliacao.provas.each do |prova| #todo que fizeram a prova
+        if prova.mat_disc_id == matricula.id
+          prova.aluno_nome = matricula.nome
+        end
+      end
+    end
+  end
+
+  def relatorioExcel
+    @avaliacao = Avaliacao.find(params[:ids])
+
+    @listaMatriculas = MatDisc.select("*")
+    .joins("LEFT JOIN mat_turmas on mat_turmas.id = mat_discs.mat_turma_id")
+    .joins("LEFT JOIN alunos on alunos.id = mat_turmas.aluno_id")
+    .where("mat_discs.disciplina_id="+@avaliacao.disciplina_id.to_s)
+    @listaMatriculas.each do |matricula| 
+      @avaliacao.provas.each do |prova|
+        if prova.mat_disc_id == matricula.id
+          prova.aluno_nome = matricula.nome
+        end
+      end
+    end
+    respond_to do |form|
+      form.xlsx{
+        response.headers['Content-Disposition'] = "attachmant; filename=\"relatorioNota.xlsx\""
+      }
+    end
   end
 
   # GET /avaliacaos/new
   def new
     @avaliacao = Avaliacao.new
-    @notas = @avaliacao.notas.build
+  end
+
+  def provas
+    @avaliacao = Avaliacao.find(params[:id])
+    listaMatriculas = MatDisc.select("*")
+    .joins("LEFT JOIN mat_turmas on mat_turmas.id = mat_discs.mat_turma_id")
+    .joins("LEFT JOIN alunos on alunos.id = mat_turmas.aluno_id")
+    .where("mat_discs.disciplina_id="+@avaliacao.disciplina_id.to_s)
+    listaMatriculas.each do |matricula| #lista todos os alunos matriculados na disciplina e turma
+      matriculadoNaoProva = false #nao fez a prova
+      @avaliacao.provas.each do |prova| #todo que fizeram a prova
+        if prova.mat_disc_id == matricula.id
+          matriculadoNaoProva = true #fez a prova
+          prova.aluno_nome = matricula.nome
+        end
+      end
+      if !matriculadoNaoProva #se nao fez entao lanca nota
+        prova = @avaliacao.provas.build
+        prova.mat_disc_id = matricula.id
+        prova.aluno_nome = matricula.nome
+        prova.nota = 0  
+      end
+    end  
   end
 
   # GET /avaliacaos/1/edit
   def edit
   end
+
+
 
   # POST /avaliacaos
   # POST /avaliacaos.json
@@ -70,6 +126,6 @@ class AvaliacaosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def avaliacao_params
-      params.require(:avaliacao).permit(:nome, :data, :disciplina_id, nota_attributes:[:nota_id, :destroy])
+      params.require(:avaliacao).permit(:descricao, :data, :disciplina_id, provas_attributes:[:id, :mat_disc_id, :nota, :_destroy])
     end
 end

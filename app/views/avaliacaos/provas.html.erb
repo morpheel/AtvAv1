@@ -1,0 +1,43 @@
+<h1>New Avaliacao</h1>
+
+<%= form_with(model: @avaliacao, local: true) do |form| %>
+  <% if @avaliacao.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@avaliacao.errors.count, "error") %> prohibited this avaliacao from being saved:</h2>
+
+      <ul>
+      <% @avaliacao1.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :disciplina_id %>
+    <%= form.collection_select(:disciplina_id, Disciplina.all, :id, :nome,{}, {:disabled => "disabled"} ) %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :descricao %>
+    <%= form.text_area :descricao, :disabled => "disabled" %>
+  </div>
+
+
+  <div id="listfields">
+      <%= form.fields_for :provas do |prova| %>
+        <%= render 'provas_fields', f: prova %>
+      <%end%>
+      <br><br>
+    </div>
+ 
+   
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
+<%= link_to 'Back', avaliacaos_path %>
