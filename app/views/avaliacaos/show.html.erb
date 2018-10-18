@@ -23,6 +23,12 @@
     </div>
 </div>
 <div class="row">
+	<div class="col-lg-4 form-group" onclick="window.location.reload(true);">  
+		<%= link_to 'Alterar Dados', edit_avaliacao_path(@avaliacao), :class => "btn btn-primary", :style=> 'color:#AAAAAA' %>
+		<%= link_to 'Voltar',  avaliacaos_path, :class => "btn btn-primary", :style=> 'color:#FFFFFF'%>
+	</div>
+</div>
+<div class="row">
 	<div class="col-lg-6">
 		<h3 class="page-header" style="margin-left: 0%;border-bottom-style: default; border-bottom-width: 1px; border-bottom-color: black;">Alunos</h3>
 	</div>
@@ -33,10 +39,8 @@
 			<span class=""><%= prova.nota %></span>
 			<% end %>
 		</p>
-	
 <div class="row">
 	<div class="col-lg-4 form-group" onclick="window.location.reload(true);">  
-		<%= link_to 'Alterar Dados', edit_avaliacao_path(@avaliacao), :class => "btn btn-primary", :style=> 'color:#AAAAAA' %>
-		<%= link_to 'Voltar',  avaliacaos_path, :class => "btn btn-primary", :style=> 'color:#FFFFFF'%>
+		<%= link_to 'Atribuir Notas', provas_avaliacaos_path(@avaliacao), :class => "btn btn-primary", :style=> 'color:#FFF' %>
 	</div>
 </div>

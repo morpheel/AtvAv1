@@ -4,7 +4,7 @@ class FrequenciaalunosController < ApplicationController
   # GET /frequenciaalunos
   # GET /frequenciaalunos.json
   def index
-    @frequenciaalunos = Frequenciaaluno.all
+    @frequenciaalunos = Frequenciaaluno.order(:disciplina_id).page(params[:page])
   end
 
   # GET /frequenciaalunos/1

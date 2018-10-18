@@ -1,42 +1,51 @@
-<h1>New Frequencia</h1>
-<%= form_with(model: @frequenciaaluno, local: true) do |form| %>
-  <% if @frequenciaaluno.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@frequenciaaluno.errors.count, "error") %> prohibited this frequencia from being saved:</h2>
-
-      <ul>
-      <% @frequenciaaluno1.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="row">
+  <div class="col-lg-6">
+    <h2 class="page-header" style="margin-left: 0%;border-bottom-style: default; border-bottom-width: 1px; border-bottom-color: black;">Lista de Presença</h2>
+  </div>
+</div>
+<div class="frequenciaaluno form">
+  <%= form_with(model: @frequenciaaluno, local: true) do |form| %>
+    <% if @frequenciaaluno.errors.any? %>
+      <div id="error_explanation" class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= pluralize(@frequenciaaluno.errors.count, "error") %> ao salvar frequencia:</h3>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <% @frequenciaaluno.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    <!-- Campos do formulário -->
+    <div class="row">
+      <div class="col-lg-3 form-group" >  
+        <%= form.label :disciplina_id %>
+        <%= form.collection_select(:disciplina_id, Disciplina.all, :id, :nome, {prompt: "Selecionar"}, { :class => "form-control", :disabled => 'disabled'}) %>
+      </div>
     </div>
-  <% end %>
-  <div class="field">
-    <%= form.label :disciplina_id %>
-    <%= form.collection_select(:disciplina_id, Disciplina.all, :id, :nome,{}, {:disabled => "disabled"} ) %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :data %>
-    <%= form.date_select :data, :disabled => "disabled" %>
-  </div>
-
-
-  <div id="listfields">
-      <%= form.fields_for :presencas do |presenca| %>
+    <div class="row">
+      <div class="col-lg-2 form-group", style="width: 200px">
+        <%= form.label :data, :class => 'control-label' %>
+        <%= form.text_field :data, :class => 'form-control', :disabled => 'disabled' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <h3 class="page-header" style="margin-left: 0%;border-bottom-style: default; border-bottom-width: 1px; border-bottom-color: black;">Alunos</h3>
+        <%= form.fields_for :presencas do |presenca| %>
         <%= render 'presencas_fields', f: presenca %>
       <%end%>
-      <br><br>
+        <br><br>
+      </div>
     </div>
- 
-   
-
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-
-<% end %>
-
-<%= link_to 'Back', frequenciaalunos_path %>
+    <div class="row">
+      <div class="col-lg-7 form-group">  
+        <input type="submit" name="commit" class="btn btn-primary" value="Salvar" data-disable-with="Salvando Presença..."/>
+        <%= link_to 'Voltar', frequenciaalunos_path, :class => "btn btn-primary", :style=> 'color:#AAAAAA' %>
+      </div>
+    </div>
+  <% end %>
+</div>

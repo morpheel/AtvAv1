@@ -1,24 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-lg-6">
+      <h2 class="page-header" style="margin-left: 0%;border-bottom-style: default; border-bottom-width: 1px; border-bottom-color: black;">Detalhes de Frequência</h2>
+  </div>
+</div>
+<div class="row">
 
-<p>
-  <strong>Data:</strong>
-  <%= @frequenciaaluno.data %>
-</p>
-
-<p>
-  <strong>Disciplina:</strong>
-  <%= @frequenciaaluno.disciplina.nome %>
-</p>
-<h3>Alunos</h3>
-<% @frequenciaaluno.presencas.each do |presenca| %>
-  <p>
-  <strong><%= presenca.aluno_nome %></strong>
-  <% if presenca.presenca %>
-    <input type="checkbox" name="presenca" value="true" checked disabled> 
-  <% else %>
-     <input type="checkbox" name="presenca" value="false" disabled>
-  <% end %>
-</p>
-<% end %>
-<%= link_to 'Edit', edit_frequenciaaluno_path(@frequenciaaluno) %> |
-<%= link_to 'Back', frequenciaalunos_path %>
+  <div class="col-lg-3 form-group" >
+      <label class = 'control-label'>Disciplina</label>
+    <input rows="1" readonly="true" class = 'form-control' value="<%= @frequenciaaluno.disciplina.nome %>">          
+    </div>
+</div> 
+<div class="row">
+  <div class="col-lg-2 form-group">
+        <label class = 'control-label'>Data</label>
+    <input readonly="true" class='form-control' value="<%= @frequenciaaluno.data %>">
+    </div>
+</div>
+<div class="row">
+  <div class="col-lg-4 form-group" onclick="window.location.reload(true);">  
+    <%= link_to 'Alterar Dados', edit_frequenciaaluno_path(@frequenciaaluno), :class => "btn btn-primary", :style=> 'color:#AAAAAA' %>
+    <%= link_to 'Voltar',  frequenciaalunos_path, :class => "btn btn-primary", :style=> 'color:#FFFFFF'%>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-6">
+    <h3 class="page-header" style="margin-left: 0%;border-bottom-style: default; border-bottom-width: 1px; border-bottom-color: black;">Alunos</h3>
+  </div>
+</div>
+    <% @frequenciaaluno.presencas.each do |presenca| %>
+    <p>
+      <strong class="col-sm-5 col-form-label col-form-label-lg" style=""><%= presenca.aluno_nome+": " %> </strong>
+      <% if presenca.presenca %>
+        <input type="checkbox" name="presenca" value="true" checked disabled> 
+      <% else %>
+        <input type="checkbox" name="presenca" value="false" disabled>
+      <% end %>
+    <% end %>
+    </p>
+<div class="row">
+  <div class="col-lg-4 form-group" onclick="window.location.reload(true);">  
+    <%= link_to 'Atualizar Frequência', presencas_frequenciaalunos_path(@frequenciaaluno), :class => "btn btn-primary", :style=> 'color:#FFF' %>
+  </div>
+</div>
