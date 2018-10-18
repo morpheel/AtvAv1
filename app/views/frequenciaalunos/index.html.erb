@@ -34,7 +34,7 @@
           <td><%= frequenciaaluno.data %></td>
           <td class="text-center"><%= link_to 'Visualizar', frequenciaaluno, :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px;' %>
             <%= link_to 'Efetuar Presença', presencas_frequenciaalunos_path(frequenciaaluno), :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px;' %>
-          <td class="text-center"><!--<%= link_to "Exportar - Excel", relatorioExcel_frequenciaalunos_path(frequenciaaluno, format: :xlsx), :target => "_blank", :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px;' %>-->
+          <td class="text-center"><%= link_to "Exportar - Excel", relatorioExcel_frequenciaalunos_path(frequenciaaluno, format: :xlsx), :target => "_blank", :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px;' %>
           <%= link_to 'Alterar', edit_frequenciaaluno_path(frequenciaaluno), :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom:2px' %>
           <%= link_to 'Remover', frequenciaaluno, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-primary btn-xs', :style=>'color:white; margin-bottom: 2px' %></td>
         </tr>

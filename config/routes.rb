@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :frequenciaalunos, :path => "frequenciaalunos" do
     collection do
       get "/presencas/:id" => "frequenciaalunos#presencas", :as => "presencas"  
-      get "/relatorioExcel/:ids" => "avaliacaos#relatorioExcel", :as => "relatorioExcel"   
+      get "/relatorioExcel/:ids" => "frequenciaalunos#relatorioExcel", :as => "relatorioExcel"   
     end
   end
   get 'pages/index'

@@ -23,6 +23,27 @@ class FrequenciaalunosController < ApplicationController
     end
   end
 
+  def relatorioExcel
+    @frequenciaaluno = Frequenciaaluno.find(params[:ids])
+
+    @listaAlunoDisciplina = MatDisc.select("*")
+    .joins("LEFT JOIN mat_turmas on mat_turmas.id = mat_discs.mat_turma_id")
+    .joins("LEFT JOIN alunos on alunos.id = mat_turmas.aluno_id")
+    .where("mat_discs.disciplina_id="+@frequenciaaluno.disciplina_id.to_s)
+    @listaAlunoDisciplina.each do |matricula| 
+      @frequenciaaluno.presencas.each do |presenca|
+        if presenca.mat_disc_id == matricula.id
+          presenca.aluno_nome = matricula.nome
+        end
+      end
+    end
+    respond_to do |form|
+      form.xlsx{
+        response.headers['Content-Disposition'] = "attachmant; filename=\"relatorioPresenca.xlsx\""
+      }
+    end
+  end
+
   # GET /frequenciaalunos/new
   def new
     @frequenciaaluno = Frequenciaaluno.new
