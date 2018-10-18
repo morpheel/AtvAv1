@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_17_223638) do
+ActiveRecord::Schema.define(version: 2018_10_18_001353) do
 
   create_table "alunos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nome"
@@ -80,10 +80,9 @@ ActiveRecord::Schema.define(version: 2018_10_17_223638) do
   end
 
   create_table "horas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.time "inicio"
-    t.time "fim"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "turno"
   end
 
   create_table "mat_discs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

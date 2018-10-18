@@ -24,11 +24,11 @@
     <div class="row">
       <div class="col-lg-2 form-group" >  
         <%= form.label :sala_id, 'Sala', :class => 'control-label' %>                 
-        <%= form.collection_select(:sala_id, Sala.all, :id, :salabloco, {:prompt=>"Selecionar Sala"}) %>
+        <%= form.collection_select(:sala_id, Sala.all, :id, :salabloco, {:prompt=>"Selecionar Sala"}, { :class => "form-control"}) %>
       </div>
-      <div class="col-lg-4 form-group" >  
-        <%= form.label :hora_id, 'Hora', :class => 'control-label' %>                 
-        <%= form.collection_select(:hora_id, Hora.all, :id, :iniciofim, {:prompt=>"Selecionar Hora"}) %>
+      <div class="col-lg-2 form-group" >  
+        <%= form.label :hora_turno, 'Turno', :class => 'control-label' %>                 
+        <%= form.collection_select(:hora_id, Hora.all, :id, :turno, {:prompt=>"Selecionar Turno"}, { :class => "form-control"}) %>
       </div>
     </div>
     <div class="row">

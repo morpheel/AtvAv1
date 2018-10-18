@@ -16,23 +16,23 @@
     <% end %>
     <!-- Campos do formulário -->
     <div class="row">
-      <div class="col-lg-4 form-group" >  
+      <div class="col-lg-3 form-group" >  
         <%= form.label "Nome da Disciplina", :class => 'control-label' %>                 
         <%= form.text_field :nome, :class => 'form-control' %>
       </div>
-      <div class="col-lg-4 form-group">
+      <div class="col-lg-2 form-group">
         <%= form.label "Carga Horária", :class => 'control-label' %>
         <%= form.text_field :cargaHoraria, :class => 'form-control' %>
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-5 form-group">   
+      <div class="col-lg-3 form-group">   
         <%= form.label "Professor", :class => 'control-label' %>
-        <%= form.collection_select(:professor_id, Professor.all, :id, :nome, {:prompt=>"Selecionar Professor"}) %>
+        <%= form.collection_select(:professor_id, Professor.all, :id, :nome, {:prompt=>"Selecionar Professor"}, { :class => "form-control"}) %>
       </div>
       <div class="col-lg-2 form-group" >  
         <%= form.label "Turma", :class => 'control-label' %>                 
-        <%= form.collection_select(:turma_id, Turma.all, :id, :nome, {:prompt=>"Selecionar Turma"}) %>
+        <%= form.collection_select(:turma_id, Turma.all, :id, :nome, {:prompt=>"Selecionar Turma"}, { :class => "form-control"}) %>
       </div>
     </div>
     <div class="row">

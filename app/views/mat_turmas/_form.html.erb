@@ -18,11 +18,11 @@
     <div class="row">
       <div class="col-lg-3 form-group" >  
         <%= form.label :aluno_id, :class => 'control-label' %>                 
-        <%= form.collection_select(:aluno_id, Aluno.all, :id, :nome, {:prompt=>"Selecione o Aluno"}) %>
+        <%= form.collection_select(:aluno_id, Aluno.all, :id, :nome, {:prompt=>"Selecione o Aluno"}, { :class => "form-control"}) %>
       </div>
       <div class="col-lg-3 form-group">   
         <%= form.label :turma_id, :class => 'control-label' %>
-        <%= form.collection_select(:turma_id, Turma.all, :id, :nome, {:prompt=>"Selecione a Turma"}) %>
+        <%= form.collection_select(:turma_id, Turma.all, :id, :nome, {:prompt=>"Selecione a Turma"}, { :class => "form-control"}) %>
       </div>
     </div>
     <div class="row">

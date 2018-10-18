@@ -1,32 +1,43 @@
-<%= form_with(model: avaliacao, local: true) do |form| %>
-  <% if avaliacao.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(avaliacao.errors.count, "error") %> prohibited this avaliacao from being saved:</h2>
-
-      <ul>
-      <% avaliacao.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="avaliacao form">
+  <%= form_with(model: avaliacao, local: true) do |form| %>
+    <% if avaliacao.errors.any? %>
+      <div id="error_explanation" class="panel panel-danger">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= pluralize(avaliacao.errors.count, "error") %> ao salvar avaliacao:</h3>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <% avaliacao.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    <!-- Campos do formulário -->
+    <div class="row">
+      <div class="col-lg-3 form-group" >  
+        <%= form.label :disciplina_id %>
+        <%= form.collection_select(:disciplina_id, Disciplina.all, :id, :nome, {prompt: "Selecionar"}, { :class => "form-control"}) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 form-group">   
+        <%= form.label :descricao, :class => 'control-label' %>
+        <%= form.text_field :descricao, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-1 form-group", style="width: 200px">
+        <%= form.label :data, :class => 'control-label' %>
+        <%= form.date_field :data, :class => 'form-control' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-7 form-group">  
+        <input type="submit" name="commit" class="btn btn-primary" value="Criar Avaliação" data-disable-with="Salvando Avaliação..."/>
+        <%= link_to 'Voltar', avaliacaos_path, :class => "btn btn-primary", :style=> 'color:#AAAAAA' %>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :descricao %>
-    <%= form.text_field :descricao %>
-  </div>
-
-  <div class="field">
-    <%= form.label :data %>
-    <%= form.date_field :data %>
-  </div>
-
-  <div class="field">
-    <%= form.label :disciplina_id %>
-    <%= form.collection_select(:disciplina_id, Disciplina.all, :id, :nome, prompt: "Selecionar") %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

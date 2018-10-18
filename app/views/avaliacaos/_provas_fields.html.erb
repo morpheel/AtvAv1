@@ -1,7 +1,9 @@
 <div class="nested-fields">
-	<div class="field">
-		<%= f.label f.object.aluno_nome %>
-    	<%= f.number_field :nota %>
+	<div class="form-group row">
+		<%= f.label f.object.aluno_nome+": ", :class => 'col-sm-10 col-form-label col-form-label-lg' %>
+		<div class="col-sm-2">
+    		<span><%= f.number_field :nota, :class => 'form-control form-control-sm', :style =>'height: 25px' %></span>
+    	</div>
 	</div>
 	<%= f.hidden_field :mat_disc_id, :value=>f.object.mat_disc_id.to_i %>
 </div>

@@ -4,7 +4,8 @@ class AvaliacaosController < ApplicationController
   # GET /avaliacaos
   # GET /avaliacaos.json
   def index
-    @avaliacaos = Avaliacao.all
+    @avaliacaos = Avaliacao.order(:data).page(params[:page])
+    
   end
 
   # GET /avaliacaos/1

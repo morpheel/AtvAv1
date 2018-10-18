@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+	Hora.create(turno: 'Manhã')
+	Hora.create(turno: 'Tarde')
+	Hora.create(turno: 'Noite')
+	usuario = Usuario.create! :nome => 'Eliakim Meneses Sobreira Oliveira', :email => 'eliakim.meneses@gmail.com', :password => '123456', :password_confirmation => '123456', :login => 'eliakim'
+
