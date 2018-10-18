@@ -15,7 +15,7 @@
     <% @frequenciaalunos.each do |frequenciaaluno| %>
       <tr>
         <td><%= frequenciaaluno.data %></td>
-        <td><%= frequenciaaluno.disciplina %></td>
+        <td><%= frequenciaaluno.disciplina.nome %></td>
         <td><%= link_to 'Show', frequenciaaluno %></td>
         <td><%= link_to 'Edit', edit_frequenciaaluno_path(frequenciaaluno) %></td>
         <td><%= link_to 'Presença', presencas_frequenciaalunos_path(frequenciaaluno) %></td>

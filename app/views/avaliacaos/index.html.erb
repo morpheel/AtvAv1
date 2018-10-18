@@ -21,6 +21,7 @@
         <td><%= link_to 'Show', avaliacao %></td>
         <td><%= link_to 'Edit', edit_avaliacao_path(avaliacao) %></td>
         <td><%= link_to 'notas', provas_avaliacaos_path(avaliacao) %></td>
+        <%= link_to "Notas - Excel", relatorioExcel_avaliacaos_path(avaliacao, format: :xlsx), :target => "_blank", :class => "btn btn-primary", :style=> 'color:#FFFFFF; margin-bottom: 5px' %>
         <td><%= link_to 'Destroy', avaliacao, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

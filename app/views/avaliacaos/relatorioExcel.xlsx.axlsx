@@ -13,7 +13,7 @@ sheet.merge_cells("A1:B1")
 imprimiu = 1
 @listaMatriculas.each do |relatorio|
     if imprimiu == 1
-       sheet.add_row ["Disciplina: "+ relatorio.disciplina.nome + "          Turma: "+ relatorio.matricula.turma.nome], :style => textnegrito
+       sheet.add_row ["Disciplina: "+ relatorio.disciplina.nome + "          Turma: "+ relatorio.mat_turma.turma.nome], :style => textnegrito
        imprimiu = 0      
     end
 end

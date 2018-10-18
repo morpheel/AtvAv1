@@ -18,11 +18,6 @@
 
   <div class="field">
     <%= form.label :disciplina_id %>
-    <%= form.text_field :disciplina_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :disciplina_id %>
     <%= form.collection_select(:disciplina_id, Disciplina.all, :id, :nome, prompt: "Selecionar") %>
   </div>
 

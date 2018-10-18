@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :avaliacaos, :path => "avaliacaos" do
     collection do
       get "/provas/:id" => "avaliacaos#provas", :as => "provas"
-      get "/relatorioExcel" => "avaliacaos#relatorioExcel", :as => "relatorioExcel"
+      get "/relatorioExcel/:ids" => "avaliacaos#relatorioExcel", :as => "relatorioExcel"
     end
   end
   resources :mat_turmas

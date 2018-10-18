@@ -11,7 +11,7 @@ class FrequenciaalunosController < ApplicationController
   # GET /frequenciaalunos/1.json
   def show
     listaAlunoDisciplina = MatDisc.select("*")
-    .joins("LEFT JOIN mat_turmas on mat_turmas.id = mat_discs.matricula_id")
+    .joins("LEFT JOIN mat_turmas on mat_turmas.id = mat_discs.mat_turma_id")
     .joins("LEFT JOIN alunos on alunos.id = mat_turmas.aluno_id")
     .where("mat_discs.disciplina_id="+@frequenciaaluno.disciplina_id.to_s)
     listaAlunoDisciplina.each do |matricula| 
@@ -36,7 +36,7 @@ class FrequenciaalunosController < ApplicationController
     @frequenciaaluno = Frequenciaaluno.find(params[:id])
      puts "eae"
     listaAlunosDisciplina = MatDisc.select("*")
-    .joins("LEFT JOIN mat_turmas on mat_turmas.id = mat_discs.matricula_id")
+    .joins("LEFT JOIN mat_turmas on mat_turmas.id = mat_discs.mat_turma_id")
     .joins("LEFT JOIN alunos on alunos.id = mat_turmas.aluno_id")
     .where("mat_discs.disciplina_id="+@frequenciaaluno.disciplina_id.to_s)
     listaAlunosDisciplina.each do |matricula| 
