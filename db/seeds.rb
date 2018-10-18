@@ -17,3 +17,4 @@
 	sala = Sala.create :numSala => '201', :bloco => 'A', :capacidade => '20'
 	
 
+
